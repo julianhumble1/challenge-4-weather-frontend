@@ -1,9 +1,11 @@
+import "./Header.css";
+
 import SavedLocationsDropdown from "./SavedLocationsDropdown.jsx";
 
 const Header = () => {
     return (
         <>
-            <nav className="navbar navbar-expand-md bg-body-tertiary container-fluid fixed-top ">
+            <nav className="navbar navbar-expand-md container-fluid fixed-top" id = "header">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">
                         <img src="/assets/logo.webp" alt="Logo" width="60" height="48" />
