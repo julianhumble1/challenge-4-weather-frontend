@@ -8,7 +8,8 @@ const App = () => {
     return (
         <>
             {/* <img className = "background-image d-none d-md-block" src="/assets/palm-trees.jpg" /> */}
-            <div className = "background-image d-none d-md-block"></div>
+            <div className="background-image d-none d-md-block"></div>
+            <div className = "background-placeholder d-md-none"></div>
             <Header />
             <SearchBox />
             <Footer />

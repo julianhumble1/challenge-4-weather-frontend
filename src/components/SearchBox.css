@@ -1,11 +1,16 @@
 .container {
     max-width: 500px;
     margin: auto;
-    margin-top: 150px
-    
+    margin-top: 150px;
+    background-color: #354955;
 }
 
 #search-button {
-    background-color: #A13D63;
+    background-color: #347488;
     font-weight: bold;
+    color:white
+}
+
+#tell-me-about {
+    color: #71A2AF
 }
