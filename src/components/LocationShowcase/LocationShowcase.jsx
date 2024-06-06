@@ -10,6 +10,11 @@ const LocationShowcase = () => {
               <div className="row">
                   <h2>Place Name</h2>
               </div>
+              <div className="row">
+                  <div className="container">
+                      <img src="" alt="" />
+                  </div>
+              </div>
           </div>
     </div>
   )
