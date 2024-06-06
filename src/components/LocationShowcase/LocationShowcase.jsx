@@ -1,3 +1,4 @@
+import ClickToFavourite from "../ClickToFavourite/ClickToFavourite.jsx"
 import "./LocationShowcase.css"
 
 const LocationShowcase = () => {
@@ -11,9 +12,7 @@ const LocationShowcase = () => {
                   <h2>Place Name</h2>
               </div>
               <div className="row">
-                  <div className="container">
-                      <img src="" alt="" />
-                  </div>
+                  <ClickToFavourite />
               </div>
           </div>
     </div>
