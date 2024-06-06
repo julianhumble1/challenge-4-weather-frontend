@@ -1,4 +1,4 @@
-import "./ClickToFavourite.css"
+import "./ClickFavourite.css"
 
 const ClickToFavourite = () => {
     return (
