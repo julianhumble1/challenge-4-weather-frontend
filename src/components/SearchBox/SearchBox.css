@@ -1,5 +1,5 @@
-.container {
-    max-width: 500px;
+#search-box {
+    max-width: 1000px;
     margin: auto;
     margin-top: 150px;
     background-color: #354955;

@@ -1,6 +1,6 @@
 import "./Header.css";
 
-import SavedLocationsDropdown from "./SavedLocationsDropdown.jsx";
+import SavedLocationsDropdown from "../SavedLocationsDropdown.jsx";
 
 const Header = () => {
     return (
