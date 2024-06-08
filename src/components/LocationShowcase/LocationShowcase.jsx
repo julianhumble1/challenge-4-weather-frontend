@@ -1,6 +1,7 @@
 import ClickToFavourite from "../ClickFavourite/ClickToFavourite.jsx"
 import ClickToUnfavourite from "../ClickFavourite/ClickToUnfavourite.jsx";
 import WeatherTodayTile from "../WeatherTodayTile/WeatherTodayTile.jsx";
+import FutureDayTile from "../FutureDayTile/FutureDayTile.jsx";
 import "./LocationShowcase.css"
 
 
@@ -22,7 +23,13 @@ const LocationShowcase = () => {
                     <div className="row">
                         <WeatherTodayTile />
                     </div>
-              </div>
+                    <div className="row justify-content-center">
+                        <FutureDayTile /> 
+                        <FutureDayTile /> 
+                        <FutureDayTile /> 
+                        <FutureDayTile /> 
+                    </div>
+            </div>
         </div>
       )
     } else {

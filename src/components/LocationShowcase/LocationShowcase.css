@@ -1,8 +1,9 @@
 #location-showcase {
     max-width: 1000px;
     margin: auto;
-    margin-top: 150px;
+    margin-top: 100px;
     background-color: #354955;
     color: #71A2AF;
-
+    padding-bottom: 4%;
+    margin-bottom: 5%;
 } 

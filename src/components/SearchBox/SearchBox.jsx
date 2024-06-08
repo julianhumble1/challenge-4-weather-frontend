@@ -3,7 +3,7 @@ import SearchResult from "../SearchResult/SearchResult.jsx"
 
 const SearchBox = () => {
   return (
-    <div className="container text-center bg-opacity-75 rounded" id = "search-box" >
+    <div className="container text-center bg-opacity-75 rounded padding-bottom" id = "search-box" >
       <div className="row text-center" id="tell-me-about">
         <h2>Tell me about...</h2>
       </div>
