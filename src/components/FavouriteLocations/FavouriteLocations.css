@@ -1,0 +1,25 @@
+#favourite-locations {
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: #354955;
+    color: #71A2AF;
+    padding-bottom: 4%;
+    margin-bottom: 5%;
+}
+
+#click-info {
+    justify-content: center;
+}
+
+#bookmark-icon {
+    height: 20px;
+    width: 30px;
+    filter: invert(65%) sepia(2%) saturate(4208%) hue-rotate(129deg) brightness(96%) contrast(91%);
+    padding: 0px;
+}
+#saved-locations {
+    background-color: #71A2AF;
+    color: #354955;
+    margin-top: 3%;
+}

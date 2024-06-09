@@ -1,6 +1,6 @@
 import "./Header.css";
 
-import SavedLocationsDropdown from "../SavedLocationsDropdown.jsx";
+import SavedLocationsDropdown from "../SavedLocationsDropdown/SavedLocationsDropdown.jsx";
 
 const Header = () => {
     return (
@@ -16,7 +16,10 @@ const Header = () => {
                     <div className="collapse navbar-collapse" id="navbarToggler">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
                             <li className="nav-item ">
-                                <a className="nav-link active" aria-current="page" href="#" >Home</a>
+                                <a className="nav-link" aria-current="page" href="#" >Home</a>
+                            </li>
+                            <li className="nav-item ">
+                                <a className="nav-link" aria-current="page" href="#" >My Saved Locations</a>
                             </li>
                             <SavedLocationsDropdown />
                         </ul>

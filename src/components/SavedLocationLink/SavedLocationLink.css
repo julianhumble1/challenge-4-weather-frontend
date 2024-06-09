@@ -1,0 +1,9 @@
+#list-bookmark-icon {
+    filter: invert(32%) sepia(95%) saturate(1357%) hue-rotate(180deg) brightness(90%) contrast(85%);
+    height: 25px;
+    width:15px;
+}
+
+#bookmark-button {
+    width:30px;
+}
