@@ -1,6 +1,4 @@
-import "./SavedLocationsDropdown.css"
-
-import SavedLocation from "../SavedLocation.jsx";
+import SavedLocation from "./SavedLocation.jsx";
 
 const SavedLocationsDropdown = () => {
   return (

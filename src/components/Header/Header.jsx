@@ -1,6 +1,6 @@
+import { NavLink } from "react-router-dom";
 import "./Header.css";
-
-import SavedLocationsDropdown from "../SavedLocationsDropdown/SavedLocationsDropdown.jsx";
+import SavedLocationsDropdown from "../SavedLocationsDropdown.jsx";
 
 const Header = () => {
     return (
@@ -15,12 +15,16 @@ const Header = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarToggler">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
-                            <li className="nav-item ">
-                                <a className="nav-link" aria-current="page" href="#" >Home</a>
-                            </li>
-                            <li className="nav-item ">
-                                <a className="nav-link" aria-current="page" href="#" >My Saved Locations</a>
-                            </li>
+                            <NavLink to = "/">
+                                <li className="nav-item">
+                                    <a className="nav-link" aria-current="page" href="#" >Home</a>
+                                </li>
+                            </NavLink>
+                            <NavLink to = "/saved-locations">
+                                <li className="nav-item ">
+                                    <a className="nav-link" aria-current="page" href="#" >My Saved Locations</a>
+                                </li>
+                            </NavLink>
                             <SavedLocationsDropdown />
                         </ul>
                         <form className="d-flex justify-content-between col-md-4 col-12">
