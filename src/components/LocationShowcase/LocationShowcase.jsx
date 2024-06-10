@@ -2,11 +2,13 @@ import ClickToFavourite from "../ClickFavourite/ClickToFavourite.jsx"
 import ClickToUnfavourite from "../ClickFavourite/ClickToUnfavourite.jsx";
 import WeatherTodayTile from "../WeatherTodayTile/WeatherTodayTile.jsx";
 import FutureDayTile from "../FutureDayTile/FutureDayTile.jsx";
+
 import "./LocationShowcase.css"
 
+import dublinForecast from "../../dublinData.js";
 
 const LocationShowcase = () => {
-    const favourited = false;
+    const favourited = true;
     if (favourited) {
         return (
           <div>
@@ -21,13 +23,13 @@ const LocationShowcase = () => {
                     <ClickToUnfavourite />
                 </div>
                 <div className="row">
-                    <WeatherTodayTile />
+                <WeatherTodayTile todayDetails={dublinForecast[0]} />
                 </div>
                 <div className="row justify-content-center">
-                    <FutureDayTile /> 
-                    <FutureDayTile /> 
-                    <FutureDayTile /> 
-                    <FutureDayTile /> 
+                  <FutureDayTile futureDayDetails={dublinForecast[1]} /> 
+                  <FutureDayTile futureDayDetails={dublinForecast[2]}/> 
+                  <FutureDayTile futureDayDetails={dublinForecast[3]}/> 
+                  <FutureDayTile futureDayDetails={dublinForecast[4]}/> 
                 </div>
             </div>
         </div>

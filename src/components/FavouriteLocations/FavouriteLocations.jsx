@@ -1,4 +1,4 @@
-import SavedLocationLink from "../SavedLocationLink/SavedLocationLink.jsx"
+import FavouriteLocationsList from "../FavouriteLocationsList.jsx"
 import "./FavouriteLocations.css"
 
 const FavouriteLocations = () => {
@@ -18,16 +18,7 @@ const FavouriteLocations = () => {
         <div className="row justify-content-center">
               Click name to view info
         </div>
-        <div className="row">
-            <div className="container rounded col-10 row mx-auto" id="saved-locations">
-                  <SavedLocationLink />
-                  <SavedLocationLink />
-                  <SavedLocationLink />
-                  <SavedLocationLink />
-                  <SavedLocationLink />
-                  <SavedLocationLink />
-            </div>
-        </div>
+        <FavouriteLocationsList />
       </div>
   )
 }

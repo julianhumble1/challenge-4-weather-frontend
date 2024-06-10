@@ -1,5 +1,5 @@
 import "./SearchBox.css"
-import SearchResult from "../SearchResult/SearchResult.jsx"
+import SearchResults from "../SearchResults.jsx"
 
 const SearchBox = () => {
   return (
@@ -17,9 +17,7 @@ const SearchBox = () => {
             Search
           </button>
         </form>
-        <SearchResult />
-        <SearchResult />
-        <SearchResult />
+        <SearchResults />
       </div>
     </div>
 

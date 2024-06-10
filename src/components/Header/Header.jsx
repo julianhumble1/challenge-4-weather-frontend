@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom";
 import "./Header.css";
 import SavedLocationsDropdown from "../SavedLocationsDropdown.jsx";
+import HeaderSearchBar from "../HeaderSearchBar.jsx";
+
+const homePage = true;
 
 const Header = () => {
     return (
@@ -17,20 +20,18 @@ const Header = () => {
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
                             <NavLink to = "/">
                                 <li className="nav-item">
-                                    <a className="nav-link" aria-current="page" href="#" >Home</a>
+                                    <div className="nav-link" aria-current="page" href="#" >Home</div>
                                 </li>
                             </NavLink>
                             <NavLink to = "/saved-locations">
                                 <li className="nav-item ">
-                                    <a className="nav-link" aria-current="page" href="#" >My Saved Locations</a>
+                                    <div className="nav-link" aria-current="page" href="#" >My Saved Locations</div>
                                 </li>
                             </NavLink>
                             <SavedLocationsDropdown />
                         </ul>
-                        <form className="d-flex justify-content-between col-md-4 col-12">
-                            <input className="form-control me-2" type="search" placeholder="Find a city..." aria-label="Search" />
-                            <button className="btn my-2 my-md-0" type="submit" id="search-button">Search</button>
-                        </form>
+                        {}
+                        <HeaderSearchBar />      
                     </div>
                 </div>
             </nav>

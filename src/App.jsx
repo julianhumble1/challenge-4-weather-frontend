@@ -14,21 +14,22 @@ const App = () => {
       <div>
         <div className="background-image d-none d-md-block"></div>
         <div className = "background-placeholder d-md-none"></div>
-          <Header />
+        <Header />
           <Routes>
-              <Route
-                path="/"
-                element = {<SearchBox />}
-              />
-              <Route
-                path = "/saved-locations"
-                element = {<FavouriteLocations />}
-              />
-              <Route
-                path="location"
-                element = {<LocationShowcase />}
-              />
-          </Routes>
+            <Route
+              path="/"
+              element = {<SearchBox />}
+            />
+            <Route
+              path = "/saved-locations"
+              element = {<FavouriteLocations />}
+            />
+            <Route
+              path="location"
+              element = {<LocationShowcase />}
+            />
+        </Routes>
+      <Footer />
     </div>
   )
 }
