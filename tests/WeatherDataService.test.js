@@ -25,7 +25,7 @@ describe("WeatherDataService class tests", () => {
             expect(responseCity).toBe("London");
         })
 
-        it("should return reponse status code 404 when invalid search term entered", async () => {
+        it("should return response status code 404 when invalid search term entered", async () => {
             // Arrange
             const invalidCityName = "citydoesntexist"
             // Act
@@ -55,6 +55,16 @@ describe("WeatherDataService class tests", () => {
             const responseCity = response.data.city.name
             // Assert
             expect(responseCity).toBe("London");
+        })
+
+        it("should return response status code 404 when invalid search term entered", async () => {
+            // Arrange
+            const invalidCityId = "1234"
+            // Act
+            const response = await WeatherDataService.getLocationDataById(invalidCityId);
+            const responseCode = response.status;
+            // Assert
+            expect(responseCode).toBe(404);
         })
     })
 })
