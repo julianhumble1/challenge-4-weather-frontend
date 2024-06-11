@@ -8,7 +8,7 @@ import "./LocationShowcase.css"
 import WeatherDataService from "../../services/weatherDataService.js";
 import WeatherResponseFormatter from "../../utils/weatherResponseFormatter.js";
 
-const response = WeatherDataService.getLocationDataByName("london");
+const response = await WeatherDataService.getLocationDataByName("london");
 const { cityInfo, cityForecast } = WeatherResponseFormatter.getResponseSummary(response);
 // const cityInfo = serviceResponse.
 
@@ -23,13 +23,13 @@ const LocationShowcase = () => {
                   <h3>Telling you about...</h3>
                 </div>
                 <div className="row">
-                <h2>{ cityInfo.name}</h2>
+                <h2>{cityInfo.name}</h2>
                 </div>
                 <div className="row">
-                    <ClickToUnfavourite />
+                  <ClickToUnfavourite />
                 </div>
                 <div className="row">
-                <WeatherTodayTile todayDetails={cityForecast[0]} />
+                  <WeatherTodayTile todayDetails={cityForecast[0]} />
                 </div>
                 <div className="row justify-content-center">
                   <FutureDayTile futureDayDetails={cityForecast[1]} /> 

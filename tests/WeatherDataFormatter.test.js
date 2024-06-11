@@ -1,7 +1,6 @@
 import WeatherDataFormatter from "../src/utils/weatherDataFormatter.js";
 
 import dummyWeatherData from "../data/dummyWeatherData.json" assert {type: "json"};
-console.log(dummyWeatherData)
 
 describe("WeatherDataFormatter Tests", () => {
     it("should return expected uppercase string from formatDescription", () => {
@@ -42,7 +41,7 @@ describe("WeatherDataFormatter Tests", () => {
 
     it("should return expected array of indices in getDayIndices", () => {
         // Arrange
-        const testData = dummyWeatherData.dublin;
+        const testData = dummyWeatherData.data;
         // Act
         const dayIndices = WeatherDataFormatter.getDayIndices(testData);
         // Assert
@@ -51,7 +50,7 @@ describe("WeatherDataFormatter Tests", () => {
 
     it("should return expected forecast array in getForecastAsArray", () => {
         // Arrange
-        const testData = dummyWeatherData.dublin;
+        const testData = dummyWeatherData.data;
         const expectedArrayFirstElement = { "date": "2024-02-09 18:00:00", "icon": "04d", "temp": 280.75, "weather_desc": "overcast clouds", }
         // Act
         const forecastArray = WeatherDataFormatter.getForecastAsArray(testData);
