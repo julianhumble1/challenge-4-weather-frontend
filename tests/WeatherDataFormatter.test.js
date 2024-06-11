@@ -45,8 +45,17 @@ describe("WeatherDataFormatter Tests", () => {
         const testData = dummyWeatherData.dublin;
         // Act
         const dayIndices = WeatherDataFormatter.getDayIndices(testData);
-        console.log(dayIndices)
         // Assert
         expect(dayIndices).toStrictEqual([0,7,15,23,31])
+    })
+
+    it("should return expected forecast array in getForecastAsArray", () => {
+        // Arrange
+        const testData = dummyWeatherData.dublin;
+        const expectedArrayFirstElement = { "date": "2024-02-09 18:00:00", "icon": "04d", "temp": 280.75, "weather_desc": "overcast clouds", }
+        // Act
+        const forecastArray = WeatherDataFormatter.getForecastAsArray(testData);
+        // Assert
+        expect(forecastArray[0]).toStrictEqual(expectedArrayFirstElement)
     })
 })
