@@ -23,5 +23,15 @@ describe("WeatherDataService class tests", () => {
             // Assert
             expect(responseCity).toBe("London");
         })
+
+        it("should return reponse status code 404 when invalid search term entered", async () => {
+            // Arrange
+            const invalidCityName = "citydoesntexist"
+            // Act
+            const response = await WeatherDataService.getLocationDataByName(invalidCityName);
+            const responseCode = response.status;
+            // Assert
+            expect(responseCode).toBe(404);
+        })
     })
 })
