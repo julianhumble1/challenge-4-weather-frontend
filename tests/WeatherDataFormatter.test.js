@@ -1,5 +1,8 @@
 import WeatherDataFormatter from "../src/utils/weatherDataFormatter.js";
 
+import dummyWeatherData from "../data/dummyWeatherData.json" assert {type: "json"};
+console.log(dummyWeatherData)
+
 describe("WeatherDataFormatter Tests", () => {
     it("should return expected uppercase string from formatDescription", () => {
         // Arrange
@@ -35,5 +38,15 @@ describe("WeatherDataFormatter Tests", () => {
         const formattedTemp = WeatherDataFormatter.formatTemp(testKelvinTemp);
         // Assert
         expect(formattedTemp).toBe("8°C")
+    })
+
+    it("should return expected array of indices in getDayIndices", () => {
+        // Arrange
+        const testData = dummyWeatherData.dublin;
+        // Act
+        const dayIndices = WeatherDataFormatter.getDayIndices(testData);
+        console.log(dayIndices)
+        // Assert
+        expect(dayIndices).toStrictEqual([0,7,15,23,31])
     })
 })
