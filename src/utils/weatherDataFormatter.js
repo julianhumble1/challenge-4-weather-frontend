@@ -1,4 +1,40 @@
-class WeatherDataUtils {
+class WeatherDataFormatter {
+
+    // returns forecast as array
+    static updateState = (data) => {
+    const tempDays = [];
+    const dayIndices = getDayIndices(data);
+    for (let i = 0; i < 5; i++) {
+        const currentData = data.list[dayIndices[i]];
+        tempDays.push({
+            date: currentData.dt_txt,
+            weather_desc: currentData.weather[0].description,
+            icon: currentData.weather[0].icon,
+            temp: currentData.main.temp,
+            });
+        }
+        return tempDays;
+    };
+
+    // identify indices in the array where a new day starts
+    static getDayIndices = (data) => {
+        let dayIndices = [0];
+        let currentDay = data.list[0].dt_txt.slice(8, 10);
+
+        for (let i = 1; i < data.list.length; i++) {
+            let day = data.list[i].dt_txt.slice(8, 10);
+            let hour = data.list[i].dt_txt.slice(11, 13);
+
+            if (day !== currentDay && hour === "15") {
+                dayIndices.push(i);
+                currentDay = day;
+                // Stop after finding 4 different days
+                if (dayIndices.length === 5) {
+                    break;
+                }}
+            }
+        return dayIndices;
+    };
 
     static formatDescription(descriptionString) {
         return descriptionString.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
@@ -24,5 +60,5 @@ class WeatherDataUtils {
 
 }
 
-export default WeatherDataUtils;
+export default WeatherDataFormatter;
 

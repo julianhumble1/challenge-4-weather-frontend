@@ -12,7 +12,7 @@ const FavouriteLocations = () => {
         </div>
         <div className="row align-items-center" id = "click-info">
               Click
-              <img src="assets/bookmarks-fill.svg" id = "bookmark-icon"></img>
+              <img src="/assets/bookmarks-fill.svg" id = "bookmark-icon"></img>
               to remove from favourites
         </div>
         <div className="row justify-content-center">

@@ -1,6 +1,11 @@
-import dummyWeatherData from "../data/dummyWeatherData.json" assert {type: "json"};
+// import dummyWeatherData from "../data/dummyWeatherData.json" assert {type: "json"};
 
-const { dublin } = dummyWeatherData;
+// const { dublin } = dummyWeatherData;
+
+import WeatherDataService from "./services/weatherDataService.js"
+
+const dublin = await WeatherDataService.getLocationDataByName("dublin").data
+console.log(dublin)
 
 const updateState = (data) => {
     const tempDays = [];
@@ -45,6 +50,5 @@ const cityData = {
     cityInfo: dublin.city, 
     cityForecast: dublinForecast
 }
-
 
 export default cityData

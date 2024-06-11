@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "./Header.css";
 import SavedLocationsDropdown from "../SavedLocationsDropdown.jsx";
 import HeaderSearchBar from "../HeaderSearchBar.jsx";
@@ -18,19 +18,18 @@ const Header = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarToggler">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
-                            <NavLink to = "/">
+                            <Link to = "/">
                                 <li className="nav-item">
                                     <div className="nav-link" aria-current="page" href="#" >Home</div>
                                 </li>
-                            </NavLink>
-                            <NavLink to = "/saved-locations">
+                            </Link>
+                            <Link to = "/saved-locations">
                                 <li className="nav-item ">
                                     <div className="nav-link" aria-current="page" href="#" >My Saved Locations</div>
                                 </li>
-                            </NavLink>
+                            </Link>
                             <SavedLocationsDropdown />
                         </ul>
-                        {}
                         <HeaderSearchBar />      
                     </div>
                 </div>

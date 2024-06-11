@@ -8,15 +8,15 @@ const { cityInfo } = cityData
 const FavouriteLocationsList = () => {
   return (
     <div className="row">
-        <div className="container rounded col-10 row mx-auto" id="saved-locations">
-          <SavedLocationLink cityInfo={cityInfo} />
-            <SavedLocationLink cityInfo={cityInfo}/>
-            <SavedLocationLink cityInfo={cityInfo}/>
-            <SavedLocationLink cityInfo={cityInfo}/>
-            <SavedLocationLink cityInfo={cityInfo}/>
-            <SavedLocationLink cityInfo={cityInfo}/>
-            <SavedLocationLink cityInfo={cityInfo}/> 
-         </div>
+      <div className="container rounded col-10 row mx-auto" id="saved-locations">
+        <SavedLocationLink cityInfo={cityInfo} />
+        <SavedLocationLink cityInfo={cityInfo}/>
+        <SavedLocationLink cityInfo={cityInfo}/>
+        <SavedLocationLink cityInfo={cityInfo}/>
+        <SavedLocationLink cityInfo={cityInfo}/>
+        <SavedLocationLink cityInfo={cityInfo}/>
+        <SavedLocationLink cityInfo={cityInfo}/> 
+      </div>
     </div>
   )
 }
