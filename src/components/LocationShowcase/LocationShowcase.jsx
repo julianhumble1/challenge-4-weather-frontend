@@ -5,8 +5,12 @@ import FutureDayTile from "../FutureDayTile/FutureDayTile.jsx";
 
 import "./LocationShowcase.css"
 
-import cityData from "../../dublinData.js";
-const { cityInfo, cityForecast } = cityData
+import WeatherDataService from "../../services/weatherDataService.js";
+import WeatherResponseFormatter from "../../utils/weatherResponseFormatter.js";
+
+const response = WeatherDataService.getLocationDataByName("london");
+const { cityInfo, cityForecast } = WeatherResponseFormatter.getResponseSummary(response);
+// const cityInfo = serviceResponse.
 
 const LocationShowcase = () => {
   const favourited = true;

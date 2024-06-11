@@ -2,8 +2,12 @@ import React from 'react'
 
 import SearchResult from "./SearchResult/SearchResult.jsx"
 
-import cityData from "../dublinData.js";
-const { cityInfo } = cityData
+import WeatherDataService from '../services/weatherDataService.js'
+import WeatherResponseFormatter from '../utils/weatherResponseFormatter.js'
+
+const response = WeatherDataService.getLocationDataByName("london");
+const { cityInfo, cityForecast } = WeatherResponseFormatter.getResponseSummary(response);
+// const cityForecast = serviceResponse.data.list;
 
 const SearchResults = () => {
   return (

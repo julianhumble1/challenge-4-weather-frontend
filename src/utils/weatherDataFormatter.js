@@ -1,7 +1,7 @@
 class WeatherDataFormatter {
 
     // returns forecast as array
-    static updateState = (data) => {
+    static getForecastAsArray = (data) => {
     const tempDays = [];
     const dayIndices = getDayIndices(data);
     for (let i = 0; i < 5; i++) {

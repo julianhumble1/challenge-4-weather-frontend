@@ -2,8 +2,11 @@ import React from 'react'
 
 import SavedLocationLink from './SavedLocationLink/SavedLocationLink.jsx'
 
-import cityData from "../dublinData.js";
-const { cityInfo } = cityData
+import WeatherDataService from '../services/weatherDataService.js'
+import WeatherResponseFormatter from '../utils/weatherResponseFormatter.js'
+
+const response = WeatherDataService.getLocationDataByName("london");
+const { cityInfo, cityForecast } = WeatherResponseFormatter.getResponseSummary(response);
 
 const FavouriteLocationsList = () => {
   return (
