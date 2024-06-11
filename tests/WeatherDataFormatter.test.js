@@ -51,10 +51,16 @@ describe("WeatherDataFormatter Tests", () => {
     it("should return expected forecast array in getForecastAsArray", () => {
         // Arrange
         const testData = dummyWeatherData.data;
-        const expectedArrayFirstElement = { "date": "2024-02-09 18:00:00", "icon": "04d", "temp": 280.75, "weather_desc": "overcast clouds" }
+        const expectedArray = [
+                {"date": "2024-02-09 18:00:00", "icon": "04d", "temp": 280.75, "weather_desc": "overcast clouds"},
+                {"date": "2024-02-10 15:00:00", "icon": "01n", "temp": 277.93, "weather_desc": "clear sky"},
+                {"date": "2024-02-11 15:00:00", "icon": "01n", "temp": 278.43, "weather_desc": "clear sky"},
+                {"date": "2024-02-12 15:00:00", "icon": "04n", "temp": 278.83, "weather_desc": "broken clouds"},
+                {"date": "2024-02-13 15:00:00", "icon": "04n", "temp": 280.36, "weather_desc": "overcast clouds"}
+            ]
         // Act
         const forecastArray = WeatherDataFormatter.getForecastAsArray(testData);
         // Assert
-        expect(forecastArray[0]).toStrictEqual(expectedArrayFirstElement)
+        expect(forecastArray).toStrictEqual(expectedArray)
     })
 })
