@@ -1,15 +1,15 @@
 import "./FutureDayTile.css"
 
-import WeatherDataUtils from "../../utils/weatherDataUtils.js";
+import WeatherDataFormatter from "../../utils/weatherDataFormatter.js";
 
 const FutureDayTile = ({ futureDayDetails }) => {
   
   const { date, weather_desc, icon, temp } = futureDayDetails;
 
-  const formattedDate = WeatherDataUtils.formatDate(date)
-  const formattedDesc = WeatherDataUtils.formatDescription(weather_desc)
-  const iconPath = WeatherDataUtils.formatIconPath(icon)
-  const formattedTemp = WeatherDataUtils.formatTemp(temp)
+  const formattedDate = WeatherDataFormatter.formatDate(date)
+  const formattedDesc = WeatherDataFormatter.formatDescription(weather_desc)
+  const iconPath = WeatherDataFormatter.formatIconPath(icon)
+  const formattedTemp = WeatherDataFormatter.formatTemp(temp)
 
   return (
     <>

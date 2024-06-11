@@ -25,7 +25,7 @@ const App = () => {
               element = {<FavouriteLocations />}
             />
             <Route
-              path="location"
+              path="location/5344157"
               element = {<LocationShowcase />}
             />
         </Routes>

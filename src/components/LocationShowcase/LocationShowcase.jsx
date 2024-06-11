@@ -5,10 +5,12 @@ import FutureDayTile from "../FutureDayTile/FutureDayTile.jsx";
 
 import "./LocationShowcase.css"
 
-import dublinForecast from "../../dublinData.js";
+import cityData from "../../dublinData.js";
+const { cityInfo, cityForecast } = cityData
 
 const LocationShowcase = () => {
-    const favourited = true;
+  const favourited = true;
+
     if (favourited) {
         return (
           <div>
@@ -17,19 +19,19 @@ const LocationShowcase = () => {
                   <h3>Telling you about...</h3>
                 </div>
                 <div className="row">
-                  <h2>Place Name</h2>
+                <h2>{ cityInfo.name}</h2>
                 </div>
                 <div className="row">
                     <ClickToUnfavourite />
                 </div>
                 <div className="row">
-                <WeatherTodayTile todayDetails={dublinForecast[0]} />
+                <WeatherTodayTile todayDetails={cityForecast[0]} />
                 </div>
                 <div className="row justify-content-center">
-                  <FutureDayTile futureDayDetails={dublinForecast[1]} /> 
-                  <FutureDayTile futureDayDetails={dublinForecast[2]}/> 
-                  <FutureDayTile futureDayDetails={dublinForecast[3]}/> 
-                  <FutureDayTile futureDayDetails={dublinForecast[4]}/> 
+                  <FutureDayTile futureDayDetails={cityForecast[1]} /> 
+                  <FutureDayTile futureDayDetails={cityForecast[2]}/> 
+                  <FutureDayTile futureDayDetails={cityForecast[3]}/> 
+                  <FutureDayTile futureDayDetails={cityForecast[4]}/> 
                 </div>
             </div>
         </div>

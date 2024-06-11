@@ -13,7 +13,7 @@ class WeatherDataUtils {
     }
     
     static formatIconPath(iconPathString) {
-        return "assets/weather-icons/" + iconPathString + ".svg";
+        return "/assets/weather-icons/" + iconPathString + ".svg";
     }
 
     static formatTemp(tempString) {

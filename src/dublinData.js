@@ -41,4 +41,10 @@ const getDayIndices = (data) => {
 
 const dublinForecast = updateState(dublin);
 
-export default dublinForecast
+const cityData = {
+    cityInfo: dublin.city, 
+    cityForecast: dublinForecast
+}
+
+
+export default cityData
