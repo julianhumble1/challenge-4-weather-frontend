@@ -27,4 +27,13 @@ describe("WeatherDataFormatter Tests", () => {
         // Assert
         expect(formattedPath).toBe("/assets/weather-icons/01n.svg")
     })
+
+    it("should return expected temp string in formatTemp", () => {
+        // Arrange
+        const testKelvinTemp = "280.75";
+        // Act
+        const formattedTemp = WeatherDataFormatter.formatTemp(testKelvinTemp);
+        // Assert
+        expect(formattedTemp).toBe("8°C")
+    })
 })
