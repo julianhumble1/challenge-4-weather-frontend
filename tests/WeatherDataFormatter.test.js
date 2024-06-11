@@ -18,4 +18,13 @@ describe("WeatherDataFormatter Tests", () => {
         // Assert
         expect(formattedDate).toBe("11-06-2024")
     })
+
+    it("should return expected path string from formatIconPath", () => {
+        // Arrange
+        const testIcon = "01n"
+        // Act
+        const formattedPath = WeatherDataFormatter.formatIconPath(testIcon)
+        // Assert
+        expect(formattedPath).toBe("/assets/weather-icons/01n.svg")
+    })
 })
