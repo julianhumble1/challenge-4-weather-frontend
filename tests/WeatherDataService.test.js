@@ -13,5 +13,15 @@ describe("WeatherDataService class tests", () => {
             // Assert
             expect(responseCode).toBe(200);
         })
+
+        it("should return response with expected city name with valid term entered", async () => {
+            // Arrange
+            const validCityName = "london";
+            // Act 
+            const response = await WeatherDataService.getLocationDataByName(validCityName);
+            const responseCity = response.data.city.name
+            // Assert
+            expect(responseCity).toBe("London");
+        })
     })
 })
