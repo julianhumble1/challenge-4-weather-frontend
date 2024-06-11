@@ -51,7 +51,7 @@ describe("WeatherDataFormatter Tests", () => {
     it("should return expected forecast array in getForecastAsArray", () => {
         // Arrange
         const testData = dummyWeatherData.data;
-        const expectedArrayFirstElement = { "date": "2024-02-09 18:00:00", "icon": "04d", "temp": 280.75, "weather_desc": "overcast clouds", }
+        const expectedArrayFirstElement = { "date": "2024-02-09 18:00:00", "icon": "04d", "temp": 280.75, "weather_desc": "overcast clouds" }
         // Act
         const forecastArray = WeatherDataFormatter.getForecastAsArray(testData);
         // Assert
