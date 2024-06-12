@@ -38,5 +38,16 @@ describe("Registration Screen tests", () => {
             // Assert
             expect(screen.queryByText("Please enter a valid email address")).not.toBeInTheDocument();
         })
+
+        it("should not render invalid email password after entering valid password", async () => {
+            // Arrange
+            render(<RegistrationScreen />) 
+            // Act
+            const passwordInput = await screen.findByPlaceholderText("Password")
+            await userEvent.type(passwordInput, "password1!");
+            await userEvent.tab();
+            // Assert
+            expect(screen.queryByText("Password must contain a special character, number and be at least 8 characters long")).not.toBeInTheDocument();
+        })
     })
 })
