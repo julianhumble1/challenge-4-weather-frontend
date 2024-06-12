@@ -6,3 +6,9 @@
     color: #71A2AF;
     margin-bottom: 5%;
 }
+
+#register-button {
+    background-color: #347488;
+    font-weight: bold;
+    color: white
+}

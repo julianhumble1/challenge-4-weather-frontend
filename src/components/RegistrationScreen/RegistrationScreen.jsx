@@ -22,13 +22,28 @@ const RegistrationScreen = () => {
         setPasswordError(validationResult); 
     }
 
+    const handleRegistration = (event) => {
+        event.preventDefault();
+        handleEmailChange(email);
+        handlePasswordChange(password)
+        try {
+            if (passwordError || emailError) {
+                throw new Error("Failed to register due to invalid details")
+            }
+            localStorage.setItem('email', email);
+            localStorage.setItem('password', password);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <div>
             <div className="container text-center bg-opacity-75 rounded padding-bottom" id="registration-box">
                 <div className="row text-center" id="tell-me-about">
                     <h2>Register</h2>
                 </div>
-                <form className="container pb-3">
+                <form className="container pb-3" onSubmit = {handleRegistration}>
                     <div className="row text-center mt-3 justify-content-center">
                         <div className = "col-12 col-md-6">
                             <input className="form-control mx-auto" type="email" placeholder="email@email.com" aria-label="email" value={email} onChange={(e) => setEmail(e.target.value) } onBlur={(e) => handleEmailChange(e.target.value) } />
@@ -46,7 +61,7 @@ const RegistrationScreen = () => {
                         }
                     </div>
                     <div className="row text-center m-3 justify-content-center">
-                        <button className="col-md-2 col-6 mx-auto mx-md-0 btn my-2 my-md-0 overflow-hidden " type="submit" id="search-button">Sign Up</button>
+                        <button className="col-md-2 col-6 mx-auto mx-md-0 btn my-2 my-md-0 overflow-hidden " type="submit" id="register-button">Sign Up</button>
                     </div>
                 </form>
             </div>
