@@ -107,6 +107,17 @@ describe("Registration Screen tests", () => {
             // Assert
             expect(screen.getByText("Click here to login")).toBeInTheDocument();
         })
+
+        it("should no longer render form after successful registration", async () => {
+            // Arrange
+            await userEvent.type(emailInput, "email@email.com")
+            await userEvent.type(passwordInput, "password1!")
+            // Act
+            const registerButton = screen.getByRole('button', { name: 'Sign Up' });
+            await userEvent.click(registerButton);
+            // Assert
+            expect(screen.queryByTestId("registration-form")).not.toBeInTheDocument();
+        })
     
         it("should render relevant error message after pressing register with invalid password", async () => {
             // Arrange

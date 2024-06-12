@@ -11,6 +11,7 @@ const RegistrationScreen = () => {
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [successfulRegistration, setSuccessfulRegistration] = useState("");
+    const [registered, setRegistered] = useState("")
 
     const handleEmailChange = (email) => {
         setEmail(email);
@@ -35,38 +36,42 @@ const RegistrationScreen = () => {
             localStorage.setItem('email', email);
             localStorage.setItem('password', password);
             setSuccessfulRegistration("success")
+            setRegistered("registered");
         } catch (error) {
             setSuccessfulRegistration("unsuccessful")
         }
     }
 
     return (
+        
         <div>
             <div className="container text-center bg-opacity-75 rounded padding-bottom" id="registration-box">
                 <div className="row text-center" id="tell-me-about">
                     <h2>Register</h2>
                 </div>
-                <form noValidate className="container pb-3" onSubmit = {handleRegistration}>
-                    <div className="row text-center mt-3 justify-content-center">
-                        <div className = "col-12 col-md-6">
-                            <input className="form-control mx-auto" type="email" placeholder="email@email.com" aria-label="email" value={email} onChange={(e) => setEmail(e.target.value) } onBlur={(e) => handleEmailChange(e.target.value) } />
-                        </div>
-                        {emailError && 
-                            <div className="text-danger">{emailError}</div>
-                        }
-                        </div>
+                {!registered && 
+                    <form noValidate className="container pb-3" onSubmit = {handleRegistration} data-testid = "registration-form">
                         <div className="row text-center mt-3 justify-content-center">
-                        <div className="col-12 col-md-6">
-                            <input className="form-control mx-auto" type="password" placeholder="Password" aria-label="password" value={ password } onChange={(e) => setPassword(e.target.value) } onBlur = {e => handlePasswordChange(e.target.value)} />
+                            <div className = "col-12 col-md-6">
+                                <input className="form-control mx-auto" type="email" placeholder="email@email.com" aria-label="email" value={email} onChange={(e) => setEmail(e.target.value) } onBlur={(e) => handleEmailChange(e.target.value) } />
+                            </div>
+                            {emailError && 
+                                <div className="text-danger">{emailError}</div>
+                            }
+                            </div>
+                            <div className="row text-center mt-3 justify-content-center">
+                            <div className="col-12 col-md-6">
+                                <input className="form-control mx-auto" type="password" placeholder="Password" aria-label="password" value={ password } onChange={(e) => setPassword(e.target.value) } onBlur = {e => handlePasswordChange(e.target.value)} />
+                            </div>
+                            {passwordError &&
+                                <div className="text-danger">{passwordError}</div>
+                            }
                         </div>
-                        {passwordError &&
-                            <div className="text-danger">{passwordError}</div>
-                        }
-                    </div>
-                    <div className="row text-center m-3 justify-content-center">
-                        <button className="col-md-2 col-6 mx-auto mx-md-0 btn my-2 my-md-0 overflow-hidden " type="submit" id="register-button">Sign Up</button>
-                    </div>
-                </form>
+                        <div className="row text-center m-3 justify-content-center">
+                            <button className="col-md-2 col-6 mx-auto mx-md-0 btn my-2 my-md-0 overflow-hidden " type="submit" id="register-button">Sign Up</button>
+                        </div>
+                    </form>
+                }
                 {successfulRegistration == "success" &&
                     <>
                         <div className="text-success">
