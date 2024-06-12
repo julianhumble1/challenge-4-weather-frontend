@@ -149,7 +149,18 @@ describe("Registration Screen tests", () => {
             const registerButton = screen.getByRole('button', { name: 'Sign Up' });
             await userEvent.click(registerButton);
             // Assert
-            expect(localStorage.setItem).not.toHaveBeenCalledWith("password","password1!");
+            expect(localStorage.setItem).not.toHaveBeenCalledWith("email","email");
+        })
+
+        it("should not store password in local storage after entering invalid password", async () => {
+            // Arrange
+            await userEvent.type(emailInput, "email@email.com")
+            await userEvent.type(passwordInput, "password")
+            // Act
+            const registerButton = screen.getByRole('button', { name: 'Sign Up' });
+            await userEvent.click(registerButton);
+            // Assert
+            expect(localStorage.setItem).not.toHaveBeenCalledWith("password","password");
         })
     })
 
