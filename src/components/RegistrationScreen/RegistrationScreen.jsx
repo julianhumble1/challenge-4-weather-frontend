@@ -9,6 +9,7 @@ const RegistrationScreen = () => {
     const [emailError, setEmailError] = useState("");
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
+    const [successfulRegistration, setSuccessfulRegistration] = useState("");
 
     const handleEmailChange = (email) => {
         setEmail(email);
@@ -32,6 +33,7 @@ const RegistrationScreen = () => {
             }
             localStorage.setItem('email', email);
             localStorage.setItem('password', password);
+            setSuccessfulRegistration("success")
         } catch (error) {
             console.log(error)
         }
@@ -64,6 +66,11 @@ const RegistrationScreen = () => {
                         <button className="col-md-2 col-6 mx-auto mx-md-0 btn my-2 my-md-0 overflow-hidden " type="submit" id="register-button">Sign Up</button>
                     </div>
                 </form>
+                {successfulRegistration == "success" &&
+                    <div className="text-success">
+                        Registration Successful!
+                    </div>
+                }
             </div>
         </div>
   );
