@@ -36,7 +36,7 @@ const RegistrationScreen = () => {
             localStorage.setItem('password', password);
             setSuccessfulRegistration("success")
         } catch (error) {
-            console.log(error)
+            setSuccessfulRegistration("unsuccessful")
         }
     }
 
@@ -46,7 +46,7 @@ const RegistrationScreen = () => {
                 <div className="row text-center" id="tell-me-about">
                     <h2>Register</h2>
                 </div>
-                <form className="container pb-3" onSubmit = {handleRegistration}>
+                <form noValidate className="container pb-3" onSubmit = {handleRegistration}>
                     <div className="row text-center mt-3 justify-content-center">
                         <div className = "col-12 col-md-6">
                             <input className="form-control mx-auto" type="email" placeholder="email@email.com" aria-label="email" value={email} onChange={(e) => setEmail(e.target.value) } onBlur={(e) => handleEmailChange(e.target.value) } />
@@ -76,6 +76,9 @@ const RegistrationScreen = () => {
                             Click here to login
                         </Link>
                     </>
+                }
+                {successfulRegistration == "unsuccessful" && 
+                    <div className="text-danger">Ensure inputted details are valid before registering</div>
                 }
             </div>
         </div>

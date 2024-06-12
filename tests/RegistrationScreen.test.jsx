@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event"
 
 import RegistrationScreen from "../src/components/RegistrationScreen/RegistrationScreen.jsx"
 import { MemoryRouter } from "react-router-dom"
-import { beforeEach } from "vitest"
+import { beforeEach, it } from "vitest"
 
 global.localStorage = {
   setItem: vi.fn(),
@@ -104,5 +104,18 @@ describe("Registration Screen tests", () => {
             // Assert
             expect(screen.getByText("Click here to login")).toBeInTheDocument();
         })
+
+        it("should render relevant error message after pressing register with invalid password", async () => {
+            // Arrange
+            await userEvent.type(emailInput, "email@email.com")
+            await userEvent.type(passwordInput, "password")
+            // Act
+            const registerButton = screen.getByRole('button', { name: 'Sign Up' });
+            await userEvent.click(registerButton);
+            // Assert
+            expect(screen.getByText("Ensure inputted details are valid before registering")).toBeInTheDocument();
+        })
+
+        it("should ")
     })
 })
