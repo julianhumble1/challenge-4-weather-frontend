@@ -27,10 +27,10 @@ const RegistrationScreen = () => {
 
     const handleRegistration = (event) => {
         event.preventDefault();
-        handleEmailChange(email);
-        handlePasswordChange(password)
+        const emailValidationResult = UserDataValidator.validateEmail(email)
+        const passwordValidationResult = UserDataValidator.validatePassword(password);
         try {
-            if (passwordError || emailError) {
+            if (emailValidationResult || passwordValidationResult) {
                 throw new Error("Failed to register due to invalid details")
             }
             localStorage.setItem('email', email);
@@ -47,7 +47,7 @@ const RegistrationScreen = () => {
         <div>
             <div className="container text-center bg-opacity-75 rounded padding-bottom" id="registration-box">
                 <div className="row text-center" id="tell-me-about">
-                    <h2>Register</h2>
+                    <h2>Registration</h2>
                 </div>
                 {!registered && 
                     <form noValidate className="container pb-3" onSubmit = {handleRegistration} data-testid = "registration-form">

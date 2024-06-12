@@ -24,7 +24,6 @@ describe("Registration Screen tests", () => {
     })
     describe("Email and password error message tests", () => {
 
-
         it("should render invalid email message after entering an invalid email", async () => {
             // Arrange
             // Act
