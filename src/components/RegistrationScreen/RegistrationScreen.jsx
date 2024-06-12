@@ -31,6 +31,8 @@ const RegistrationScreen = () => {
         const passwordValidationResult = UserDataValidator.validatePassword(password);
         try {
             if (emailValidationResult || passwordValidationResult) {
+                handleEmailChange(email);
+                handlePasswordChange(email)
                 throw new Error("Failed to register due to invalid details")
             }
             localStorage.setItem('email', email);
@@ -38,6 +40,8 @@ const RegistrationScreen = () => {
             setSuccessfulRegistration("success")
             setRegistered("registered");
         } catch (error) {
+            setEmail("")
+            setPassword("")
             setSuccessfulRegistration("unsuccessful")
         }
     }

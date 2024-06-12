@@ -3,7 +3,6 @@ import userEvent from "@testing-library/user-event"
 
 import RegistrationScreen from "../src/components/RegistrationScreen/RegistrationScreen.jsx"
 import { MemoryRouter } from "react-router-dom"
-import { beforeEach, describe, it } from "vitest"
 
 global.localStorage = {
   setItem: vi.fn(),
