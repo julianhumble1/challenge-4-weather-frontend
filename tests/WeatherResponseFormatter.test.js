@@ -24,7 +24,6 @@ describe("WeatherResponseFormatterTests", () => {
             ]
         // Act
         const cityForecast = WeatherResponseFormatter.getCityForecast(testResponse)
-        console.log(cityForecast)
         // Assert
         expect(cityForecast).toStrictEqual(expectedArray)
     })
@@ -44,7 +43,6 @@ describe("WeatherResponseFormatterTests", () => {
         };
         // Act
         const responseSummary = WeatherResponseFormatter.getResponseSummary(testResponse)
-        console.log(responseSummary)
         // Assert
         expect(responseSummary).toStrictEqual(expected)
     })

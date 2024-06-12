@@ -8,6 +8,8 @@ import Footer from "./components/Footer.jsx";
 import SearchBox from "./components/SearchBox/SearchBox.jsx";
 import LocationShowcase from "./components/LocationShowcase/LocationShowcase.jsx";
 import FavouriteLocations from "./components/FavouriteLocations/FavouriteLocations.jsx"
+import LoginScreen from "./components/LoginScreen/LoginScreen.jsx";
+import RegistrationScreen from "./components/RegistrationScreen/RegistrationScreen.jsx";
 
 const App = () => {
   return (
@@ -27,6 +29,14 @@ const App = () => {
             <Route
               path="location/2643743"
               element = {<LocationShowcase />}
+            />
+            <Route
+              path="login-screen"
+              element = {<LoginScreen/>}
+            />
+            <Route
+              path="registration-screen"
+              element = {<RegistrationScreen/>}
             />
         </Routes>
       <Footer />

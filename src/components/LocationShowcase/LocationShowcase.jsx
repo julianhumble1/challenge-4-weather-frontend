@@ -10,7 +10,6 @@ import WeatherResponseFormatter from "../../utils/weatherResponseFormatter.js";
 
 const response = await WeatherDataService.getLocationDataByName("london");
 const { cityInfo, cityForecast } = WeatherResponseFormatter.getResponseSummary(response);
-// const cityInfo = serviceResponse.
 
 const LocationShowcase = () => {
   const favourited = true;

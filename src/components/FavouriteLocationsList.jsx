@@ -6,7 +6,7 @@ import WeatherDataService from '../services/weatherDataService.js'
 import WeatherResponseFormatter from '../utils/weatherResponseFormatter.js'
 
 const response = await WeatherDataService.getLocationDataByName("london");
-const { cityInfo, cityForecast } = WeatherResponseFormatter.getResponseSummary(response);
+const { cityInfo } = WeatherResponseFormatter.getResponseSummary(response);
 
 const FavouriteLocationsList = () => {
   return (

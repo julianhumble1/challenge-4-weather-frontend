@@ -29,6 +29,16 @@ const Header = () => {
                                 </li>
                             </Link>
                             <SavedLocationsDropdown />
+                            <Link to="/login-screen">
+                                <li className="nav-item ">
+                                    <div className="nav-link" aria-current="page" href="#">Login</div>
+                                </li>
+                            </Link>
+                            <Link to="/registration-screen">
+                                <li className="nav-item ">
+                                    <div className="nav-link" aria-current="page" href="#">Register</div>
+                                </li>
+                            </Link>
                         </ul>
                         <HeaderSearchBar />      
                     </div>
