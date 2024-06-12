@@ -116,6 +116,15 @@ describe("Registration Screen tests", () => {
             expect(screen.getByText("Ensure inputted details are valid before registering")).toBeInTheDocument();
         })
 
-        it("should ")
+        it("should render relevant error message after pressing register with invalid email", async () => {
+            // Arrange
+            await userEvent.type(emailInput, "email")
+            await userEvent.type(passwordInput, "password1!")
+            // Act
+            const registerButton = screen.getByRole('button', { name: 'Sign Up' });
+            await userEvent.click(registerButton);
+            // Assert
+            expect(screen.getByText("Ensure inputted details are valid before registering")).toBeInTheDocument();
+        })
     })
 })
