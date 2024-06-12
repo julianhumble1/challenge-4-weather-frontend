@@ -37,5 +37,16 @@ describe("Login Screen Tests", () => {
             // Assert
             expect(screen.getByText("Username or password incorrect. Please try again.")).toBeInTheDocument();
         })
+
+        it("should render invalid details message when password does not match local storage", async() => {
+            // Arrange
+            await userEvent.type(emailInput, "email@email.com")
+            await userEvent.type(passwordInput, "password")
+            // Act 
+            const loginButton = screen.getByRole('button', { name: 'Login' });
+            await userEvent.click(loginButton)
+            // Assert
+            expect(screen.getByText("Username or password incorrect. Please try again.")).toBeInTheDocument();
+        })
     })
 })
