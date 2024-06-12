@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 
 import RegistrationScreen from "../src/components/RegistrationScreen/RegistrationScreen.jsx"
+import { MemoryRouter } from "react-router-dom"
 import { beforeEach } from "vitest"
 
 global.localStorage = {
@@ -15,7 +16,10 @@ describe("Registration Screen tests", () => {
         let passwordInput;
 
         beforeEach( async () => {
-            render(<RegistrationScreen />)
+            render(<MemoryRouter>
+                <RegistrationScreen />
+                </MemoryRouter>
+            )
             emailInput = await screen.findByPlaceholderText("email@email.com")
             passwordInput = await screen.findByPlaceholderText("Password")
             vi.clearAllMocks();
@@ -88,6 +92,17 @@ describe("Registration Screen tests", () => {
             await userEvent.click(registerButton);
             // Assert
             expect(screen.getByText("Registration Successful!")).toBeInTheDocument();
+        })
+
+        it("should render link to login after pressing register with valid details", async () => {
+            // Arrange
+            await userEvent.type(emailInput, "email@email.com")
+            await userEvent.type(passwordInput, "password1!")
+            // Act
+            const registerButton = screen.getByRole('button', { name: 'Sign Up' });
+            await userEvent.click(registerButton);
+            // Assert
+            expect(screen.getByText("Click here to login")).toBeInTheDocument();
         })
     })
 })

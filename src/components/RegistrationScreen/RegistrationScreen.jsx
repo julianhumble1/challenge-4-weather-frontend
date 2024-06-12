@@ -2,6 +2,7 @@ import "./RegistrationScreen.css"
 import UserDataValidator from "../../utils/UserDataValidator.js";
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const RegistrationScreen = () => {
 
@@ -67,9 +68,14 @@ const RegistrationScreen = () => {
                     </div>
                 </form>
                 {successfulRegistration == "success" &&
-                    <div className="text-success">
-                        Registration Successful!
-                    </div>
+                    <>
+                        <div className="text-success">
+                            Registration Successful!
+                        </div>
+                        <Link to="/login-screen">
+                            Click here to login
+                        </Link>
+                    </>
                 }
             </div>
         </div>
