@@ -15,21 +15,20 @@ const SearchResult = ({ searchQuery }) => {
   const [cityInfo, setCityInfo] = useState("");
   const [validSearch, setValidSearch] = useState("")
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setSearching(true)
-      const response = await WeatherDataService.getLocationDataByName(searchQuery);
-      if (response.status === 200) {
-        const summary = WeatherResponseFormatter.getResponseSummary(response);
-        setValidSearch("valid")
-        setCityInfo(summary.cityInfo);       
-      } else {
-        setValidSearch("invalid")
-      }
-      setSearching(false);
+  const fetchData = async () => {
+    setSearching(true)
+    const response = await WeatherDataService.getLocationDataByName(searchQuery);
+    if (response.status === 200) {
+      const summary = WeatherResponseFormatter.getResponseSummary(response);
+      setValidSearch("valid")
+      setCityInfo(summary.cityInfo);       
+    } else {
+      setValidSearch("invalid")
     }
-
-    fetchData();
+    setSearching(false);
+  }
+  useEffect(() => {
+     fetchData();
   }, [searchQuery])
 
   return (

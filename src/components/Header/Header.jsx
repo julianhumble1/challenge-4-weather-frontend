@@ -19,7 +19,7 @@ const Header = ({ renderHeaderSearch, searchQuery, setSearchQuery }) => {
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
                             <Link to = "/">
                                 <li className="nav-item">
-                                    <div className="nav-link" aria-current="page" href="#" onClick = {setSearchQuery("")} >Home</div>
+                                    <div className="nav-link" aria-current="page" href="#">Home</div>
                                 </li>
                             </Link>
                             <Link to = "/saved-locations">
