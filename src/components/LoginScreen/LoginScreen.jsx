@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const LoginScreen = () => {
 
-  const [loggedIn, setLoggedIn] = useState("")
+  const [loggedIn, setLoggedIn] = useState(false)
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +18,7 @@ const LoginScreen = () => {
     const passwordMatch = (password == localStorage.getItem("password"));
     if (emailMatch && passwordMatch) {
       setLoginAttemptStatus("successful")
-      setLoggedIn("logged-in");
+      setLoggedIn(true);
     } else {
       setLoginAttemptStatus("failed")
       setEmail("")

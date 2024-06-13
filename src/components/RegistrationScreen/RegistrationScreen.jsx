@@ -1,6 +1,8 @@
 import "./RegistrationScreen.css"
 import UserDataValidator from "../../utils/UserDataValidator.js";
 
+import UserHandler from "../../utils/UserHandler.js"
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -13,30 +15,34 @@ const RegistrationScreen = () => {
     const [successfulRegistration, setSuccessfulRegistration] = useState("");
     const [registered, setRegistered] = useState("")
 
-    const handleEmailChange = (email) => {
-        setEmail(email);
-        const validationResult = UserDataValidator.validateEmail(email);
-        setEmailError(validationResult);
+    const handleEmailChange = (newEmail) => {
+        setEmail(newEmail);
+        const validEmail = UserDataValidator.validateEmail(email);
+        if (!validEmail) {
+            setEmailError("Please enter a valid email address")
+        }
+        
     }
 
     const handlePasswordChange = (password) => {
         setPassword(password);
-        const validationResult = UserDataValidator.validatePassword(password);
-        setPasswordError(validationResult); 
+        const validPassword = UserDataValidator.validatePassword(password);
+        if (!validPassword) {
+            setPasswordError("Password must contain a special character, number and be at least 8 characters long"); 
+        }
     }
 
     const handleRegistration = (event) => {
         event.preventDefault();
-        const emailValidationResult = UserDataValidator.validateEmail(email)
-        const passwordValidationResult = UserDataValidator.validatePassword(password);
+        const validEmail = UserDataValidator.validateEmail(email)
+        const validPassword = UserDataValidator.validatePassword(password);
         try {
-            if (emailValidationResult || passwordValidationResult) {
+            if (!validEmail || !validPassword) {
                 handleEmailChange(email);
-                handlePasswordChange(email)
+                handlePasswordChange(password)
                 throw new Error("Failed to register due to invalid details")
-            }
-            localStorage.setItem('email', email);
-            localStorage.setItem('password', password);
+            } 
+            UserHandler.addUserToLocalStorage(email, password);
             setSuccessfulRegistration("success")
             setRegistered("registered");
         } catch (error) {
