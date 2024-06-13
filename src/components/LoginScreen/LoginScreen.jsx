@@ -2,6 +2,7 @@ import "./LoginScreen.css"
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import UserHandler from "../../utils/UserHandler.js";
 
 const LoginScreen = () => {
 
@@ -14,11 +15,13 @@ const LoginScreen = () => {
 
   const handleLogin = (event) => {
     event.preventDefault()
-    const emailMatch = (email == localStorage.getItem("email"))
-    const passwordMatch = (password == localStorage.getItem("password"));
-    if (emailMatch && passwordMatch) {
+    // const emailMatch = (email == localStorage.getItem("email"))
+    // const passwordMatch = (password == localStorage.getItem("password"));
+    const login = UserHandler.checkEmailAndPasswordMatchStorage(email, password);
+
+    if (login) {
       setLoginAttemptStatus("successful")
-      setLoggedIn(true);
+      setLoggedIn(login);
     } else {
       setLoginAttemptStatus("failed")
       setEmail("")

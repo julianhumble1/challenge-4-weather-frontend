@@ -1,28 +1,38 @@
 class UserHandler {
 
-    static getAllItemsInLocalStorage = () => {
-        const allLocalStorageItems = {};
+    static getAllItemsInLocalStorageAsArray = () => {
+        const allLocalStorageItems = {}
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
             allLocalStorageItems[key] = localStorage.getItem(key);
         }
-        console.log(allLocalStorageItems)
-        return allLocalStorageItems
+        return Object.values(allLocalStorageItems).map(user => JSON.parse(user));
     }
-    static addUserToLocalStorage = (username, password) => {
-        const allLocalStorageItems = this.getAllItemsInLocalStorage();
-        const newUserID = Object.keys(allLocalStorageItems).length + 1
-        const newUser = this.makeNewUserObject(username, password, newUserID)
+    static addUserToLocalStorage = (email, password) => {
+        const allUsers = this.getAllItemsInLocalStorageAsArray();
+        const newUserID = Object.keys(allUsers).length + 1
+        const newUser = this.makeNewUserObject(email, password, newUserID)
         localStorage.setItem(`user${newUserID}`, JSON.stringify(newUser));
     }
 
-    static makeNewUserObject = (newUsername, newPassword, newUserID) => {
+    static makeNewUserObject = (newEmail, newPassword, newUserID) => {
         return {
-            username: newUsername,
+            email: newEmail,
             password: newPassword,
-            UserID: newUserID,
+            userID: newUserID,
             favouriteLocations: []
         }
+    }
+
+    static checkEmailAndPasswordMatchStorage = (emailToCheck, passwordToCheck) => {
+        const usersArray = this.getAllItemsInLocalStorageAsArray();
+        for (let i = 0; i < usersArray.length; i++) {
+            if (emailToCheck === usersArray[i].email && passwordToCheck === usersArray[i].password) {
+                console.log("matched")
+                return usersArray[i].userID
+            }
+        }
+        return false;
     }
 }
 
