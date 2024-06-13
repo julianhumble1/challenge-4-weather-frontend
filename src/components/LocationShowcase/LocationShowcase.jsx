@@ -8,10 +8,18 @@ import "./LocationShowcase.css"
 import WeatherDataService from "../../services/weatherDataService.js";
 import WeatherResponseFormatter from "../../utils/weatherResponseFormatter.js";
 
+import { useEffect } from "react";
+
 const response = await WeatherDataService.getLocationDataByName("london");
 const { cityInfo, cityForecast } = WeatherResponseFormatter.getResponseSummary(response);
 
-const LocationShowcase = () => {
+const LocationShowcase = ({ setRenderHeaderSearch }) => {
+  
+  useEffect(() => {
+    setRenderHeaderSearch(true);
+  }, [setRenderHeaderSearch])
+
+  
   const favourited = true;
 
     if (favourited) {

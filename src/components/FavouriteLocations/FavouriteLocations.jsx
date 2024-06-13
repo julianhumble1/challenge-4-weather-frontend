@@ -1,7 +1,13 @@
+import { useEffect } from "react";
 import FavouriteLocationsList from "../FavouriteLocationsList.jsx"
 import "./FavouriteLocations.css"
 
-const FavouriteLocations = () => {
+const FavouriteLocations = ({ setRenderHeaderSearch }) => {
+
+  useEffect(() => {
+    setRenderHeaderSearch(true);
+  }, [setRenderHeaderSearch])
+
   return (
       <div className="container text-center bg-opacity-75 rounded" id="favourite-locations">
         <div className="row">

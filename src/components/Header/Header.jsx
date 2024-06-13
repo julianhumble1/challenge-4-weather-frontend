@@ -1,11 +1,10 @@
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import SavedLocationsDropdown from "../SavedLocationsDropdown.jsx";
-import HeaderSearchBar from "../HeaderSearchBar.jsx";
+import HeaderSearchBar from "../HeaderSearchBar/HeaderSearchBar.jsx";
 
-const homePage = true;
-
-const Header = () => {
+const Header = ({ renderHeaderSearch, searchQuery, setSearchQuery }) => {
+    
     return (
         <>
             <nav className="navbar navbar-expand-md container-fluid fixed-top" id = "header">
@@ -20,7 +19,7 @@ const Header = () => {
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
                             <Link to = "/">
                                 <li className="nav-item">
-                                    <div className="nav-link" aria-current="page" href="#" >Home</div>
+                                    <div className="nav-link" aria-current="page" href="#" onClick = {setSearchQuery("")} >Home</div>
                                 </li>
                             </Link>
                             <Link to = "/saved-locations">
@@ -40,7 +39,9 @@ const Header = () => {
                                 </li>
                             </Link>
                         </ul>
-                        <HeaderSearchBar />      
+                        {renderHeaderSearch && 
+                            <HeaderSearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>      
+                        }
                     </div>
                 </div>
             </nav>

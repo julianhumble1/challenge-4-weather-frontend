@@ -9,15 +9,15 @@ import WeatherResponseFormatter from "../../utils/weatherResponseFormatter.js"
 
 
 const SearchResult = ({ searchQuery }) => {
+  
+  const [searching, setSearching] = useState(false);
 
   const [cityInfo, setCityInfo] = useState("");
   const [validSearch, setValidSearch] = useState("")
 
-  // const response = await WeatherDataService.getLocationDataByName(searchQuery);
-  // const { cityInfo } = WeatherResponseFormatter.getResponseSummary(response);
-
   useEffect(() => {
     const fetchData = async () => {
+      setSearching(true)
       const response = await WeatherDataService.getLocationDataByName(searchQuery);
       if (response.status === 200) {
         const summary = WeatherResponseFormatter.getResponseSummary(response);
@@ -26,6 +26,7 @@ const SearchResult = ({ searchQuery }) => {
       } else {
         setValidSearch("invalid")
       }
+      setSearching(false);
     }
 
     fetchData();
@@ -33,14 +34,17 @@ const SearchResult = ({ searchQuery }) => {
 
   return (
     <>
+        {searching &&
+          <div id = "searching"> Searching for results...</div>
+        }
         <div className="row justify-content-center">
-          <div className="col-8 py-3 my-2 text-start " id="result-box">
-            {validSearch === "valid" &&
+        <div className="col-8 py-3 my-2 text-start " id="result-box">
+          {validSearch === "valid" &&
               <Link to={`/location/${cityInfo.id}`} className="link-underline-dark text-dark">{cityInfo.name}</Link>
-            }
-            {(validSearch === "invalid") &&
+          }
+          {(validSearch === "invalid") &&
               <div className="container text-danger">Failed to find matching result. Please try again.</div>
-            }
+          }
           </div>
         </div>
     </>

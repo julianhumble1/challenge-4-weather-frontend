@@ -1,18 +1,30 @@
 import "./SearchBox.css"
 
 import SearchResult from "../SearchResult/SearchResult.jsx"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
+const SearchBox = ({setRenderHeaderSearch, searchQuery, setSearchQuery}) => {
 
-const SearchBox = () => {
+  useEffect(() => {
+    setRenderHeaderSearch(false);
+  }, [setRenderHeaderSearch])
+
+  useEffect(() => {
+    if(searchQuery!="")
+    updateSearch(searchQuery)
+  }, [searchQuery])
   
-  const [searchQuery, setSearchQuery] = useState("");
   const [tempQuery, setTempQuery] = useState("")
   const [searched, setSearched] = useState("")
+  
 
   const handleSearch = async (event) => {
     event.preventDefault();
-    setSearchQuery(tempQuery)
+    updateSearch(tempQuery)
+  }
+
+  const updateSearch = (query) => {
+    setSearchQuery(query);
     setSearched("searched")
   }
 
