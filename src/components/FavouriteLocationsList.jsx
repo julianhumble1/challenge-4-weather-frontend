@@ -9,7 +9,7 @@ const FavouriteLocationsList = ({ loggedIn }) => {
 
   return (
   <>
-      {!favouriteLocationsList &&
+      {favouriteLocationsList.length === 0 &&
         <h2 className = "pt-5">No saved locations currently</h2>
     }
     <div className="row">

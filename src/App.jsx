@@ -11,7 +11,6 @@ import FavouriteLocations from "./components/FavouriteLocations/FavouriteLocatio
 import LoginScreen from "./components/LoginScreen/LoginScreen.jsx";
 import RegistrationScreen from "./components/RegistrationScreen/RegistrationScreen.jsx";
 import { useState } from "react";
-import UserHandler from "./utils/UserHandler.js";
 
 const App = () => {
 

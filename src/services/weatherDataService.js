@@ -20,7 +20,4 @@ class WeatherDataService {
     }
 }
 
-// const response = await WeatherDataService.getLocationDataByName("London")
-// console.log(response)
-
 export default WeatherDataService

@@ -1,16 +1,26 @@
-import SavedLocation from "./SavedLocation.jsx";
+import FavLocationUtils from "../utils/FavLocationUtils.js";
+import LocationDropdownLink from "./LocationDropdownLink.jsx";
 
-const SavedLocationsDropdown = () => {
+const SavedLocationsDropdown = ({ loggedIn }) => {
+  
+  const favouriteLocationsList = FavLocationUtils.getUsersFavouriteLocations(loggedIn)
+
   return (
-    <div className = "dropdown-center align-items-center">
-      <button className="nav-link dropdown-toggle d-none d-md-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <>
+      {favouriteLocationsList.length > 0 &&
+      <div className = "dropdown-center align-items-center">
+        <button className="nav-link dropdown-toggle d-none d-md-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         </button>
-        {/* Saved Locations */}
         <ul className="dropdown-menu" >
-            <SavedLocation />
-            <SavedLocation />
+            {
+              favouriteLocationsList.map(locationId => (
+                <LocationDropdownLink key = {locationId} locationId={locationId} /> 
+              ))
+            }
         </ul>
-    </div>
+      </div>
+    }
+    </>
   )
 }
 

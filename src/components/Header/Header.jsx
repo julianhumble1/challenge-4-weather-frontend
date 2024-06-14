@@ -33,7 +33,7 @@ const Header = ({ renderHeaderSearch, searchQuery, setSearchQuery, loggedIn, set
                                             <div className="nav-link" aria-current="page" href="#" >My Saved Locations</div>
                                         </li>
                                     </Link>
-                                    <SavedLocationsDropdown />
+                                <SavedLocationsDropdown loggedIn={loggedIn} />
                                     <li className = "nav-item"> 
                                         <button onClick={handleLogout} className="nav-link link-underline-dark">Logout</button>
                                     </li>
