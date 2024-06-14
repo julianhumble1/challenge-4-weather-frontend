@@ -16,12 +16,12 @@ class UserHandler {
         localStorage.setItem(`user${newUserID}`, JSON.stringify(newUser));
     }
 
-    static makeNewUserObject = (newEmail, newPassword, newUserID) => {
+    static makeNewUserObject = (newEmail, newPassword, newUserID, newFavouriteLocations = []) => {
         return {
             email: newEmail,
             password: newPassword,
             userID: newUserID,
-            favouriteLocations: []
+            favouriteLocations: newFavouriteLocations
         }
     }
 
@@ -34,6 +34,21 @@ class UserHandler {
             }
         }
         return false;
+    }
+
+    static getUsersFavouriteLocations = (userID) => {
+        const usersArray = this.getAllItemsInLocalStorageAsArray();
+        const user = usersArray.find(user => user.userID === userID)
+        return user ? user.favouriteLocations : false;
+    }
+
+    static addLocationToFavourites = (locationID, userID) => {
+        const usersArray = this.getAllItemsInLocalStorageAsArray();
+        const user = usersArray.find(user => user.userID === userID);
+        if (user) {
+            user.favouriteLocations.push(locationID);
+            localStorage.setItem(`user${userID}`, JSON.stringify(user));
+        }
     }
 }
 

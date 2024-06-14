@@ -20,7 +20,7 @@ const App = () => {
 
   const [loggedIn, setLoggedIn] = useState("")
 
-  UserHandler.addUserToLocalStorage("email@email.com", "password1!")
+  const[favouriteLocations, setFavouriteLocations] = useState([])
 
   return (
       <div>
