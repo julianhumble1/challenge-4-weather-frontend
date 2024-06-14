@@ -20,29 +20,42 @@ const App = () => {
 
   const [loggedIn, setLoggedIn] = useState("")
 
-  const[favouriteLocations, setFavouriteLocations] = useState([])
-
   return (
       <div>
         <div className="background-image d-none d-md-block"></div>
         <div className = "background-placeholder d-md-none"></div>
-      <Header renderHeaderSearch={renderHeaderSearch} searchQuery={searchQuery} setSearchQuery={setSearchQuery} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+        <Header
+          renderHeaderSearch={renderHeaderSearch}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          loggedIn={loggedIn}
+          setLoggedIn={setLoggedIn}
+        />
           <Routes>
             <Route
               path="/"
-              element={<SearchBox setRenderHeaderSearch={setRenderHeaderSearch} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>}
+              element={<SearchBox
+                setRenderHeaderSearch={setRenderHeaderSearch}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery} />}
             />
             <Route
               path = "/saved-locations"
-              element={<FavouriteLocations setRenderHeaderSearch={setRenderHeaderSearch} />}
+              element={<FavouriteLocations
+                setRenderHeaderSearch={setRenderHeaderSearch} />}
             />
             <Route
               path="location/:id"
-              element = {<LocationShowcase setRenderHeaderSearch={setRenderHeaderSearch}/>}
-            />
+              element={<LocationShowcase 
+                setRenderHeaderSearch={setRenderHeaderSearch}
+                loggedIn={loggedIn}
+                />}
+              />
             <Route
               path="login-screen"
-              element = {<LoginScreen loggedIn={loggedIn} setLoggedIn={setLoggedIn}/> }
+              element={<LoginScreen
+                loggedIn={loggedIn}
+                setLoggedIn={setLoggedIn} />}
             />
             <Route
               path="registration-screen"

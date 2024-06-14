@@ -1,5 +1,5 @@
-import ClickToFavourite from "../ClickFavourite/ClickToFavourite.jsx"
-import ClickToUnfavourite from "../ClickFavourite/ClickToUnfavourite.jsx";
+import ToggleFavourite from "../ClickFavourite/ToggleFavourite.jsx"
+
 import WeatherTodayTile from "../WeatherTodayTile/WeatherTodayTile.jsx";
 import FutureDayTile from "../FutureDayTile/FutureDayTile.jsx";
 
@@ -11,7 +11,7 @@ import WeatherResponseFormatter from "../../utils/weatherResponseFormatter.js";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const LocationShowcase = ({ setRenderHeaderSearch }) => {
+const LocationShowcase = ({ setRenderHeaderSearch, loggedIn }) => {
   
   const locationID = useParams().id;
   const [cityInfo, setCityInfo] = useState();
@@ -19,7 +19,6 @@ const LocationShowcase = ({ setRenderHeaderSearch }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("")
   
-
   useEffect(() => {
     setRenderHeaderSearch(true);
   }, [setRenderHeaderSearch])
@@ -40,8 +39,6 @@ const LocationShowcase = ({ setRenderHeaderSearch }) => {
     fetchData();
   }, [locationID])
 
-
-  
   return (
     <div>
       <div className="container text-center bg-opacity-75 rounded" id="location-showcase">
@@ -63,8 +60,13 @@ const LocationShowcase = ({ setRenderHeaderSearch }) => {
             <div className="row">
               <h2>{cityInfo.name}</h2>
             </div>
-            <div className="row">
-              <ClickToUnfavourite />
+          <div className="row">
+            {loggedIn &&
+              <ToggleFavourite
+                loggedIn={loggedIn}
+                locationID = {locationID}
+              />
+            }
             </div>
             <div className="row">
               <WeatherTodayTile todayDetails={cityForecast[0]} />
