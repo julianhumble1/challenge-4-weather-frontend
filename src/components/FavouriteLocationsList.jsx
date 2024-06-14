@@ -16,7 +16,7 @@ const FavouriteLocationsList = ({ loggedIn }) => {
       <div className="container rounded col-10 row mx-auto" id="saved-locations">
         {favouriteLocationsList && (
           favouriteLocationsList.map(locationId => (
-            <SavedLocationLink key={locationId} locationId={locationId} />
+            <SavedLocationLink key={locationId} locationId={locationId} loggedIn = {loggedIn} />
           ))
         )}
       </div>

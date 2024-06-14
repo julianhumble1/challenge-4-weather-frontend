@@ -8,11 +8,16 @@ class FavLocationUtils {
     }
 
     static addLocationToFavourites = (locationID, userID) => {
-        const usersArray = UserHandler.getAllItemsInLocalStorageAsArray();
-        const user = usersArray.find(user => user.userID === userID);
-        if (user) {
-            user.favouriteLocations.push(locationID);
-            localStorage.setItem(`user${userID}`, JSON.stringify(user));
+        const checkAlreadyInFavourites = this.checkLocationInFavourites(locationID, userID)
+        if (!checkAlreadyInFavourites) {
+            const usersArray = UserHandler.getAllItemsInLocalStorageAsArray();
+            const user = usersArray.find(user => user.userID === userID);
+            if (user) {
+                user.favouriteLocations.push(String(locationID));
+                localStorage.setItem(`user${userID}`, JSON.stringify(user));
+            }
+        } else {
+            console.log("Location already in favourites")
         }
     }
 
@@ -20,7 +25,7 @@ class FavLocationUtils {
         const usersArray = UserHandler.getAllItemsInLocalStorageAsArray();
         const user = usersArray.find(user => user.userID === userID);
         if (user) {
-            user.favouriteLocations = user.favouriteLocations.filter(location => location !== locationID);
+            user.favouriteLocations = user.favouriteLocations.filter(location => location !== String(locationID));
             localStorage.setItem(`user${userID}`, JSON.stringify(user));
         }
     }
@@ -28,12 +33,11 @@ class FavLocationUtils {
     static checkLocationInFavourites = (locationID, userID) => {
         if (userID !== "") {
             const usersArray = UserHandler.getAllItemsInLocalStorageAsArray();
-            const user = usersArray.find(user => user.userID = userID);
-            return user.favouriteLocations.includes(locationID)
+            const user = usersArray.find(user => user.userID === userID);
+            return user.favouriteLocations.includes(String(locationID))
         } else {
             return false;
         }
-
     }
 }
 
