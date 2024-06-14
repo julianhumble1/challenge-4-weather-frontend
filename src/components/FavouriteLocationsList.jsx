@@ -1,14 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 
 import SavedLocationLink from './SavedLocationLink/SavedLocationLink.jsx'
 import FavLocationUtils from "../utils/FavLocationUtils.js"
-
-import WeatherDataService from '../services/weatherDataService.js'
-import WeatherResponseFormatter from '../utils/weatherResponseFormatter.js'
-
-// const response = await WeatherDataService.getLocationDataByName("london");
-// const { cityInfo } = WeatherResponseFormatter.getResponseSummary(response);
-// console.log(cityInfo)
 
 const FavouriteLocationsList = ({ loggedIn }) => {
 

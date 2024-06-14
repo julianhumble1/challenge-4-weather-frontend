@@ -35,7 +35,7 @@ const Header = ({ renderHeaderSearch, searchQuery, setSearchQuery, loggedIn, set
                                     </Link>
                                     <SavedLocationsDropdown />
                                     <li className = "nav-item"> 
-                                        <button onClick={handleLogout} className="nav-link">Logout</button>
+                                        <button onClick={handleLogout} className="nav-link link-underline-dark">Logout</button>
                                     </li>
                                 </>
                             }
