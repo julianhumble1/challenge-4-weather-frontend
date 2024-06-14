@@ -42,7 +42,8 @@ const App = () => {
             <Route
               path = "/saved-locations"
               element={<FavouriteLocations
-                setRenderHeaderSearch={setRenderHeaderSearch} />}
+                setRenderHeaderSearch={setRenderHeaderSearch}
+                loggedIn={loggedIn} />}
             />
             <Route
               path="location/:id"
@@ -55,7 +56,8 @@ const App = () => {
               path="login-screen"
               element={<LoginScreen
                 loggedIn={loggedIn}
-                setLoggedIn={setLoggedIn} />}
+                setLoggedIn={setLoggedIn}
+              />}
             />
             <Route
               path="registration-screen"

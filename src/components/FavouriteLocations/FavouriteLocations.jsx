@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import FavouriteLocationsList from "../FavouriteLocationsList.jsx"
 import "./FavouriteLocations.css"
 
-const FavouriteLocations = ({ setRenderHeaderSearch }) => {
+const FavouriteLocations = ({ setRenderHeaderSearch, loggedIn }) => {
 
   useEffect(() => {
     setRenderHeaderSearch(true);
@@ -24,7 +24,7 @@ const FavouriteLocations = ({ setRenderHeaderSearch }) => {
         <div className="row justify-content-center">
               Click name to view info
         </div>
-        <FavouriteLocationsList />
+      <FavouriteLocationsList loggedIn={loggedIn} />
       </div>
   )
 }
