@@ -14,14 +14,6 @@ const FavouriteLocationsList = ({ loggedIn }) => {
 
   const favouriteLocationsList = FavLocationUtils.getUsersFavouriteLocations(loggedIn)
 
-  // const obtainCityInfo = async (locationId) => {
-  //   const response = await WeatherDataService.getLocationDataById(locationId);
-  //   console.log(response)
-  //   const { cityInfo } = await WeatherResponseFormatter.getResponseSummary(response)
-  //   console.log(cityInfo)
-  //   return cityInfo
-  // }
-
   return (
   <>
       {!favouriteLocationsList &&
@@ -29,14 +21,11 @@ const FavouriteLocationsList = ({ loggedIn }) => {
     }
     <div className="row">
       <div className="container rounded col-10 row mx-auto" id="saved-locations">
-        {/* <SavedLocationLink cityInfo={cityInfo}/>
-        <SavedLocationLink cityInfo={cityInfo}/>
-        <SavedLocationLink cityInfo={cityInfo}/>
-        <SavedLocationLink cityInfo={cityInfo}/>
-        <SavedLocationLink cityInfo={cityInfo}/>
-        <SavedLocationLink cityInfo={cityInfo}/>
-        <SavedLocationLink cityInfo={cityInfo}/>  */}
-          <SavedLocationLink locationId={favouriteLocationsList[0]} />
+        {favouriteLocationsList && (
+          favouriteLocationsList.map(locationId => (
+            <SavedLocationLink key={locationId} locationId={locationId} />
+          ))
+        )}
       </div>
       </div>
     </>
