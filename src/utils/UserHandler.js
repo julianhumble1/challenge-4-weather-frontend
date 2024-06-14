@@ -8,6 +8,7 @@ class UserHandler {
         }
         return Object.values(allLocalStorageItems).map(user => JSON.parse(user));
     }
+    
     static addUserToLocalStorage = (email, password) => {
         const allUsers = this.getAllItemsInLocalStorageAsArray();
         const newUserID = Object.keys(allUsers).length + 1

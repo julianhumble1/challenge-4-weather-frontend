@@ -30,14 +30,14 @@ const App = () => {
           <Routes>
             <Route
               path="/"
-          element={<SearchBox setRenderHeaderSearch={setRenderHeaderSearch} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>}
+              element={<SearchBox setRenderHeaderSearch={setRenderHeaderSearch} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>}
             />
             <Route
               path = "/saved-locations"
               element={<FavouriteLocations setRenderHeaderSearch={setRenderHeaderSearch} />}
             />
             <Route
-              path="location/2643743"
+              path="location/:id"
               element = {<LocationShowcase setRenderHeaderSearch={setRenderHeaderSearch}/>}
             />
             <Route
