@@ -3,8 +3,12 @@ import "./Header.css";
 import SavedLocationsDropdown from "../SavedLocationsDropdown.jsx";
 import HeaderSearchBar from "../HeaderSearchBar/HeaderSearchBar.jsx";
 
-const Header = ({ renderHeaderSearch, searchQuery, setSearchQuery }) => {
+const Header = ({ renderHeaderSearch, searchQuery, setSearchQuery, loggedIn, setLoggedIn }) => {
     
+    const handleLogout = () => {
+        setLoggedIn("");
+    }
+
     return (
         <>
             <nav className="navbar navbar-expand-md container-fluid fixed-top" id = "header">
@@ -22,22 +26,33 @@ const Header = ({ renderHeaderSearch, searchQuery, setSearchQuery }) => {
                                     <div className="nav-link" aria-current="page" href="#">Home</div>
                                 </li>
                             </Link>
-                            <Link to = "/saved-locations">
-                                <li className="nav-item ">
-                                    <div className="nav-link" aria-current="page" href="#" >My Saved Locations</div>
-                                </li>
-                            </Link>
-                            <SavedLocationsDropdown />
-                            <Link to="/login-screen">
-                                <li className="nav-item ">
-                                    <div className="nav-link" aria-current="page" href="#">Login</div>
-                                </li>
-                            </Link>
-                            <Link to="/registration-screen">
-                                <li className="nav-item ">
-                                    <div className="nav-link" aria-current="page" href="#">Register</div>
-                                </li>
-                            </Link>
+                            {loggedIn &&
+                                <>
+                                    <Link to="/saved-locations">
+                                        <li className="nav-item ">
+                                            <div className="nav-link" aria-current="page" href="#" >My Saved Locations</div>
+                                        </li>
+                                    </Link>
+                                    <SavedLocationsDropdown />
+                                    <li className = "nav-item"> 
+                                        <button onClick={handleLogout} className="nav-link">Logout</button>
+                                    </li>
+                                </>
+                            }
+                            {(loggedIn === "") &&
+                                <>
+                                    <Link to="/login-screen">
+                                        <li className="nav-item ">
+                                            <div className="nav-link" aria-current="page" href="#">Login</div>
+                                        </li>
+                                    </Link>
+                                    <Link to="/registration-screen">
+                                        <li className="nav-item ">
+                                            <div className="nav-link" aria-current="page" href="#">Register</div>
+                                        </li>
+                                    </Link>
+                                </>
+                            }
                         </ul>
                         {renderHeaderSearch && 
                             <HeaderSearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>      

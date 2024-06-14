@@ -18,13 +18,15 @@ const App = () => {
   const [renderHeaderSearch, setRenderHeaderSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
+  const [loggedIn, setLoggedIn] = useState("")
+
   UserHandler.addUserToLocalStorage("email@email.com", "password1!")
 
   return (
       <div>
         <div className="background-image d-none d-md-block"></div>
         <div className = "background-placeholder d-md-none"></div>
-      <Header renderHeaderSearch={renderHeaderSearch} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+      <Header renderHeaderSearch={renderHeaderSearch} searchQuery={searchQuery} setSearchQuery={setSearchQuery} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
           <Routes>
             <Route
               path="/"
@@ -40,7 +42,7 @@ const App = () => {
             />
             <Route
               path="login-screen"
-              element = {<LoginScreen/>}
+              element = {<LoginScreen loggedIn={loggedIn} setLoggedIn={setLoggedIn}/> }
             />
             <Route
               path="registration-screen"
