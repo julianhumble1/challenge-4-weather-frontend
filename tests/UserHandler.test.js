@@ -16,9 +16,9 @@ describe("user handler tests", () => {
                 get length() {
                 return Object.keys(storage).length;
                 },
-                // Mimic localStorage.key(i)
                 key: (i) => Object.keys(storage)[i],
-                };
+                
+            };
         }
         global.localStorage = localStorageMock();
     })
@@ -87,4 +87,16 @@ describe("user handler tests", () => {
             expect(newUser.favouriteLocations).toStrictEqual(["2643123", "2650188"])
         })
     })
+
+    describe("add user to local storage tests", () => {
+        it("should add user to the local storage key 'user'+ one higher than number of existing users", () => {
+            // Arrange
+            const existingUsers = UserHandler.getAllItemsInLocalStorageAsArray().length;
+            const expectedID = existingUsers + 1;
+            // Act
+            UserHandler.addUserToLocalStorage("email@email.com", "password1!")
+            // Assert
+            expect(localStorage[`user${expectedID}`]).not.toBeNull;
+        })
+    }) 
 })
