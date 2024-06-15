@@ -121,6 +121,14 @@ describe("fav location utils tests", () => {
         it("should not call localStorage.setItem if location is not already in favourites", () => {
             // Arrange
             // Act
+            FavLocationUtils.removeLocationFromFavourites(2650188, 5);
+            // Assert
+            expect(localStorage.setItem).not.toHaveBeenCalled();
+        })
+
+        it("should not call localStorage.setItem if user does not exist", () => {
+            // Arrange
+            // Act
             FavLocationUtils.removeLocationFromFavourites(2650188, 1);
             // Assert
             expect(localStorage.setItem).not.toHaveBeenCalled();
