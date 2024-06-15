@@ -73,7 +73,7 @@ describe("fav location utils tests", () => {
     })
 
     describe("add location to favourites tests", () => {
-        it("should call localStorage.setItem with expected details if location not already in favourites and user exists", () => {
+        it("should call localStorage.setItem with updated details if location not already in favourites and user exists", () => {
             // Arrange
             // Act
             FavLocationUtils.addLocationToFavourites(2650188, 1);
@@ -90,7 +90,14 @@ describe("fav location utils tests", () => {
             FavLocationUtils.addLocationToFavourites(2643123, 1);
             // Assert
             expect(localStorage.setItem).not.toHaveBeenCalled();
+        })
 
+        it("should not call localStorage.setItem if user does not exist", () => {
+            // Arrange
+            // Act
+            FavLocationUtils.addLocationToFavourites(2643123, 5);
+            // Assert
+            expect(localStorage.setItem).not.toHaveBeenCalled();
         })
     })
 })
