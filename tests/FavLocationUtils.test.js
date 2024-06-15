@@ -45,5 +45,9 @@ describe("fav location utils tests", () => {
             // Assert
             expect(FavLocationUtils.checkLocationInFavourites(2650188, 1)).toBe(false);
         })
+
+        it("should return false if userID is empty string", () => {
+             expect(FavLocationUtils.checkLocationInFavourites(2650188, "")).toBe(false);
+        })
     })
 })
