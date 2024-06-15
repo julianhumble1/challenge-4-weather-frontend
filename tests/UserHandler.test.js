@@ -70,5 +70,13 @@ describe("user handler tests", () => {
             // Assert
             expect(newUser.userID).toStrictEqual(1)
         })
+
+        it("should create user object with empty favourite locations list if not specified", () => {
+            // Arrange
+            // Act
+            const newUser = UserHandler.makeNewUserObject("email@email.com", "password1!", 1)
+            // Assert
+            expect(newUser.favouriteLocations).toStrictEqual([])
+        })
     })
 })
