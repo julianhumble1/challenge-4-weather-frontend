@@ -62,5 +62,13 @@ describe("user handler tests", () => {
             // Assert
             expect(newUser.password).toStrictEqual("password1!")
         })
+
+        it("should create user object with passed in user ID", () => {
+            // Arrange
+            // Act
+            const newUser = UserHandler.makeNewUserObject("email@email.com", "password1!", 1)
+            // Assert
+            expect(newUser.userID).toStrictEqual(1)
+        })
     })
 })
