@@ -6,8 +6,6 @@ import UserHandler from "../../utils/UserHandler.js";
 
 const LoginScreen = ({loggedIn, setLoggedIn}) => {
 
-  
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,8 +13,6 @@ const LoginScreen = ({loggedIn, setLoggedIn}) => {
 
   const handleLogin = (event) => {
     event.preventDefault()
-    // const emailMatch = (email == localStorage.getItem("email"))
-    // const passwordMatch = (password == localStorage.getItem("password"));
     const loginID = UserHandler.checkEmailAndPasswordMatchStorage(email, password);
 
     if (loginID) {

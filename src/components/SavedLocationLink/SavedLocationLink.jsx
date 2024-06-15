@@ -45,7 +45,7 @@ const SavedLocationLink = ({ locationId, loggedIn}) => {
             <img src="assets/bookmarks-fill.svg" alt="" id="list-un-bookmark-button" onClick={handleUnBookmark} />
           </button>
           }
-        {unbookmarked &&
+          {unbookmarked &&
           <button className="col-2 px-0  btn" id="bookmark-button">
             <img src="assets/bookmarks.svg" alt="" id = "list-bookmark-button" onClick={handleReBookmark}/>
           </button>
