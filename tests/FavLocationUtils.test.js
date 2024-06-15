@@ -12,7 +12,6 @@ describe("fav location utils tests", () => {
 
         const localStorageMock = () => {
             return {
-                getItem: vi.fn(),
                 setItem: vi.fn()
             };
         }
@@ -83,6 +82,15 @@ describe("fav location utils tests", () => {
                 "user1", 
                 JSON.stringify({ email: "newer@newer.newer", password: "password1!", userID: 1, favouriteLocations: ["2643123", "2650188"] })
             );
+        })
+
+        it("should not call localStorage.setItem if location is already in favourites", () => {
+            // Arrange
+            // Act
+            FavLocationUtils.addLocationToFavourites(2643123, 1);
+            // Assert
+            expect(localStorage.setItem).not.toHaveBeenCalled();
+
         })
     })
 })
