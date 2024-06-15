@@ -29,7 +29,6 @@ describe("user handler tests", () => {
             localStorage.setItem("user1", JSON.stringify(user1))
             localStorage.setItem("user2", JSON.stringify(user2))
             const expected = [user1, user2]
-            console.log(localStorage)
             // Act
             const allLocalStorageItems = UserHandler.getAllItemsInLocalStorageAsArray();
             // Assert
@@ -96,7 +95,29 @@ describe("user handler tests", () => {
             // Act
             UserHandler.addUserToLocalStorage("email@email.com", "password1!")
             // Assert
-            expect(localStorage[`user${expectedID}`]).not.toBeNull;
+            expect(localStorage[`user${expectedID}`]).not.toBeNull();
+        })
+
+        it("should add user to local storage with passed in email", () => {
+            // Arrange
+            const existingUsers = UserHandler.getAllItemsInLocalStorageAsArray().length;
+            const expectedID = existingUsers + 1;
+            // Act
+            UserHandler.addUserToLocalStorage("email@email.com", "password1!")
+            const newUserInLocalStorage = localStorage.getItem(`user${expectedID}`);
+            // Assert
+            expect(JSON.parse(newUserInLocalStorage).email).toStrictEqual("email@email.com")
+        })
+
+        it("should add user to local storage with passed in password", () => {
+            // Arrange
+            const existingUsers = UserHandler.getAllItemsInLocalStorageAsArray().length;
+            const expectedID = existingUsers + 1;
+            // Act
+            UserHandler.addUserToLocalStorage("email@email.com", "password1!")
+            const newUserInLocalStorage = localStorage.getItem(`user${expectedID}`);
+            // Assert
+            expect(JSON.parse(newUserInLocalStorage).password).toStrictEqual("password1!")
         })
     }) 
 })
