@@ -117,5 +117,13 @@ describe("fav location utils tests", () => {
                 JSON.stringify({ email: "newer@newer.newer", password: "password1!", userID: 1, favouriteLocations: []})
             );
         })
+
+        it("should not call localStorage.setItem if location is not already in favourites", () => {
+            // Arrange
+            // Act
+            FavLocationUtils.removeLocationFromFavourites(2650188, 1);
+            // Assert
+            expect(localStorage.setItem).not.toHaveBeenCalled();
+        })
     })
 })

@@ -23,8 +23,9 @@ class FavLocationUtils {
 
     static removeLocationFromFavourites = (locationID, userID) => {
         const usersArray = UserHandler.getAllItemsInLocalStorageAsArray();
+        const checkAlreadyInFavourites = this.checkLocationInFavourites(locationID, userID)
         const user = usersArray.find(user => user.userID === userID);
-        if (user) {
+        if (user && checkAlreadyInFavourites) {
             user.favouriteLocations = user.favouriteLocations.filter(location => location !== String(locationID));
             localStorage.setItem(`user${userID}`, JSON.stringify(user));
         }
