@@ -1,4 +1,4 @@
-import { beforeEach } from "vitest";
+import { beforeEach, describe } from "vitest";
 import UserHandler from "../src/utils/UserHandler.js";
 
 describe("user handler tests", () => {
@@ -44,6 +44,23 @@ describe("user handler tests", () => {
             // Arrange
             expect(allLocalStorageItems).toStrictEqual(expected)
         })
+    })
 
+    describe("make new user tests", () => {
+        it("should create user object with passed in email", () => {
+            // Arrange
+            // Act
+            const newUser = UserHandler.makeNewUserObject("email@email.com", "password1!", 1)
+            // Assert
+            expect(newUser.email).toStrictEqual("email@email.com")
+        })
+
+        it("should create user object with passed in password", () => {
+            // Arrange
+            // Act
+            const newUser = UserHandler.makeNewUserObject("email@email.com", "password1!", 1)
+            // Assert
+            expect(newUser.password).toStrictEqual("password1!")
+        })
     })
 })
