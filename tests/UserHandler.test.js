@@ -131,4 +131,15 @@ describe("user handler tests", () => {
             expect(JSON.parse(newUserInLocalStorage).userID).toStrictEqual(expectedID)
         })
     }) 
+
+    describe("check email and password match storage tests", () => {
+        it("should return false if email is not in local storage", () => {
+            // Arrange
+            localStorage.setItem("user1", JSON.stringify(user1))
+            const badEmail = "fail@fail.fail"
+            // Act
+            // Assert
+            expect(UserHandler.checkEmailAndPasswordMatchStorage(badEmail, "password1!")).toBe(false);
+        })
+    })
 })
