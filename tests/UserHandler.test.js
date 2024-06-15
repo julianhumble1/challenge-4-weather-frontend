@@ -119,5 +119,16 @@ describe("user handler tests", () => {
             // Assert
             expect(JSON.parse(newUserInLocalStorage).password).toStrictEqual("password1!")
         })
+
+        it("should add user to local storage with expected ID", () => {
+            // Arrange
+            const existingUsers = UserHandler.getAllItemsInLocalStorageAsArray().length;
+            const expectedID = existingUsers + 1;
+            // Act
+            UserHandler.addUserToLocalStorage("email@email.com", "password1!")
+            const newUserInLocalStorage = localStorage.getItem(`user${expectedID}`);
+            // Assert
+            expect(JSON.parse(newUserInLocalStorage).userID).toStrictEqual(expectedID)
+        })
     }) 
 })
