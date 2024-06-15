@@ -1,13 +1,14 @@
-import { beforeEach } from "vitest";
+import { afterEach, beforeEach } from "vitest";
 import FavLocationUtils from "../src/utils/FavLocationUtils.js";
 import UserHandler from "../src/utils/UserHandler.js";
 
 describe("fav location utils tests", () => {
-    const user1 = { email: "newer@newer.newer", password: "password1!", userID: 1, favouriteLocations: ["2643123"] };
-    const user2 = { email: "email@email.com", password: "password1!", userID: 2, favouriteLocations: ["2643123", "2650188"] };
-    const user3 = { email: "new@new.new", password: "password1!", userID: 3, favouriteLocations: [] }
     
     beforeEach(() => {
+        const user1 = { email: "newer@newer.newer", password: "password1!", userID: 1, favouriteLocations: ["2643123"] };
+        const user2 = { email: "email@email.com", password: "password1!", userID: 2, favouriteLocations: ["2643123", "2650188"] };
+        const user3 = { email: "new@new.new", password: "password1!", userID: 3, favouriteLocations: [] }
+
         vi.spyOn(UserHandler, "getAllItemsInLocalStorageAsArray").mockReturnValue([user1, user2, user3])
 
         const localStorageMock = () => {
@@ -16,6 +17,10 @@ describe("fav location utils tests", () => {
             };
         }
         global.localStorage = localStorageMock();
+    })
+
+    afterEach(() => {
+        vi.clearAllMocks()
     })
 
 
@@ -98,6 +103,19 @@ describe("fav location utils tests", () => {
             FavLocationUtils.addLocationToFavourites(2643123, 5);
             // Assert
             expect(localStorage.setItem).not.toHaveBeenCalled();
+        })
+    })
+
+    describe("remove location from favourite tests", () => {
+        it("should call localStorage.setItem with updated details if location already in favourites and user exists", () => {
+            // Arrange
+            // Act
+            FavLocationUtils.removeLocationFromFavourites(2643123, 1);
+            // Assert
+            expect(localStorage.setItem).toHaveBeenCalledWith(
+                "user1", 
+                JSON.stringify({ email: "newer@newer.newer", password: "password1!", userID: 1, favouriteLocations: []})
+            );
         })
     })
 })
