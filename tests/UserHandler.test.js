@@ -141,5 +141,15 @@ describe("user handler tests", () => {
             // Assert
             expect(UserHandler.checkEmailAndPasswordMatchStorage(badEmail, "password1!")).toBe(false);
         })
+
+        it("should return false if password does not match email in local storage", () => {
+            // Arrange
+            localStorage.setItem("user1", JSON.stringify(user1))
+            const email = "email@email.com"
+            const wrongPassword = "password"
+            // Act
+            // Assert
+            expect(UserHandler.checkEmailAndPasswordMatchStorage(email, wrongPassword)).toBe(false);
+        })
     })
 })
