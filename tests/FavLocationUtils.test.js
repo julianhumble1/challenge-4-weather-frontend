@@ -38,5 +38,12 @@ describe("fav location utils tests", () => {
             // Assert
             expect(FavLocationUtils.checkLocationInFavourites(2643123, 1)).toBe(true);
         })
+
+        it("should return false if location is not in user's fav locations", () => {
+            // Arrange
+            // Act
+            // Assert
+            expect(FavLocationUtils.checkLocationInFavourites(2650188, 1)).toBe(false);
+        })
     })
 })
