@@ -14,7 +14,6 @@ const LoginScreen = ({loggedIn, setLoggedIn}) => {
   const handleLogin = (event) => {
     event.preventDefault()
     const loginID = UserHandler.checkEmailAndPasswordMatchStorage(email, password);
-
     if (loginID) {
       setLoginAttemptStatus("successful")
       setLoggedIn(loginID);
