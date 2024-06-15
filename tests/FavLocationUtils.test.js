@@ -23,6 +23,14 @@ describe("fav location utils tests", () => {
 
             expect(FavLocationUtils.getUsersFavouriteLocations(1)).toStrictEqual(["2643123"])
         })
+
+        it("should return false if user doesn't exist in local storage", () => {
+            // Arrange
+            // Act
+            // Assert
+
+            expect(FavLocationUtils.getUsersFavouriteLocations(4)).toBe(false)
+        })
     })
 
 })
