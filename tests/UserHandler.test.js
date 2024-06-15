@@ -145,11 +145,21 @@ describe("user handler tests", () => {
         it("should return false if password does not match email in local storage", () => {
             // Arrange
             localStorage.setItem("user1", JSON.stringify(user1))
-            const email = "email@email.com"
+            const email = "newer@newer.com"
             const wrongPassword = "password"
             // Act
             // Assert
             expect(UserHandler.checkEmailAndPasswordMatchStorage(email, wrongPassword)).toBe(false);
+        })
+
+        it("should return user ID if email and password match local storage", () => {
+            // Arrange
+            localStorage.setItem("user1", JSON.stringify(user1))
+            const email = "newer@newer.newer"
+            const password = "password1!"
+            // Act
+            // Assert
+            expect(UserHandler.checkEmailAndPasswordMatchStorage(email, password)).toBe(1);
         })
     })
 })
