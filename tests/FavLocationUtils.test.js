@@ -1,12 +1,24 @@
+import { beforeEach } from "vitest";
 import FavLocationUtils from "../src/utils/FavLocationUtils.js";
 import UserHandler from "../src/utils/UserHandler.js";
 
 describe("fav location utils tests", () => {
     const user1 = { email: "newer@newer.newer", password: "password1!", userID: 1, favouriteLocations: ["2643123"] };
     const user2 = { email: "email@email.com", password: "password1!", userID: 2, favouriteLocations: ["2643123", "2650188"] };
-    const user3 = {email:"new@new.new", password: "password1!", userID: 3, favouriteLocations: []}
+    const user3 = { email: "new@new.new", password: "password1!", userID: 3, favouriteLocations: [] }
+    
+    beforeEach(() => {
+        vi.spyOn(UserHandler, "getAllItemsInLocalStorageAsArray").mockReturnValue([user1, user2, user3])
 
-    vi.spyOn(UserHandler, "getAllItemsInLocalStorageAsArray").mockReturnValue([user1, user2, user3])
+        const localStorageMock = () => {
+            return {
+                getItem: vi.fn(),
+                setItem: vi.fn()
+            };
+        }
+        global.localStorage = localStorageMock();
+    })
+
 
     describe("get users favourite locations tests", () => {
         it("should return empty array if user has no favourite locations", () => {
@@ -47,6 +59,9 @@ describe("fav location utils tests", () => {
         })
 
         it("should return false if userID is empty string", () => {
+            // Arrange
+            // Act
+            // Assert
              expect(FavLocationUtils.checkLocationInFavourites(2650188, "")).toBe(false);
         })
 
@@ -55,6 +70,19 @@ describe("fav location utils tests", () => {
             // Act
             // Assert
             expect(FavLocationUtils.checkLocationInFavourites(2650188, 5)).toBe(false);
+        })
+    })
+
+    describe("add location to favourites tests", () => {
+        it("should call localStorage.setItem with expected details if location not already in favourites and user exists", () => {
+            // Arrange
+            // Act
+            FavLocationUtils.addLocationToFavourites(2650188, 1);
+            // Assert
+            expect(localStorage.setItem).toHaveBeenCalledWith(
+                "user1", 
+                JSON.stringify({ email: "newer@newer.newer", password: "password1!", userID: 1, favouriteLocations: ["2643123", "2650188"] })
+            );
         })
     })
 })

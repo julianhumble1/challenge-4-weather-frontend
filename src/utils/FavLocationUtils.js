@@ -3,7 +3,6 @@ import UserHandler from "./UserHandler.js";
 class FavLocationUtils {
     static getUsersFavouriteLocations = (userID) => {
         const usersArray = UserHandler.getAllItemsInLocalStorageAsArray();
-        console.log(usersArray)
         const user = usersArray.find(user => user.userID === userID)
         return user ? user.favouriteLocations : false;
     }
