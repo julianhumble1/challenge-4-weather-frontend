@@ -34,8 +34,6 @@ class UserHandler {
         }
         return false;
     }
-
-    
 }
 
 export default UserHandler;

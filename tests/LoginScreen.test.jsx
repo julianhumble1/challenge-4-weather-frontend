@@ -2,6 +2,8 @@ import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 
 import LoginScreen from "../src/components/LoginScreen/LoginScreen.jsx"
+// import { setLoggedIn }
+
 import UserHandler from "../src/utils/UserHandler.js"
 import { MemoryRouter } from "react-router-dom"
 
@@ -11,25 +13,12 @@ import { cleanup } from '@testing-library/react';
 import { beforeEach, describe } from "vitest"
 
 describe("Login Screen Tests", () => {
-
+        
     let emailInput;
     let passwordInput;
     let loggedInMock;
     let setLoggedInMock;
 
-    beforeEach(async () => {
-
-        loggedInMock = "";
-        setLoggedInMock = vi.fn();
-
-        render(<MemoryRouter>
-            <LoginScreen loggedIn={""} setLoggedIn={setLoggedInMock} />
-        </MemoryRouter>
-        )
-        emailInput = await screen.findByPlaceholderText("email@email.com")
-        passwordInput = await screen.findByPlaceholderText("Password")
-    })
-        
     afterEach(() => {
         vi.clearAllMocks();
         cleanup();
@@ -37,8 +26,20 @@ describe("Login Screen Tests", () => {
 
     describe("Invalid login tests", () => {
 
-        beforeEach(() => {
+        beforeEach(async () => {
             vi.spyOn(UserHandler, "checkEmailAndPasswordMatchStorage").mockReturnValue(false);
+
+            loggedInMock = "";
+            setLoggedInMock = vi.fn()
+
+            render(<MemoryRouter>
+                    <LoginScreen loggedIn={loggedInMock} setLoggedIn={setLoggedInMock} />
+                </MemoryRouter>
+            )
+
+            emailInput = await screen.findByPlaceholderText("email@email.com")
+            passwordInput = await screen.findByPlaceholderText("Password")
+
         })
 
         it("should render invalid details message when email does not match local storage", async () => {
@@ -74,14 +75,38 @@ describe("Login Screen Tests", () => {
             expect(setLoggedInMock).not.toHaveBeenCalled();
         })
 
-    })
-
-    describe("valid login tests", () => {
-        it("should call setLoggedIn with the user ID when user details match local storage", async () => {
+        it("should not call setLoggedIn when password doesn't match local storage", async () => {
             // Arrange
             await userEvent.type(emailInput, "email@email.com")
             await userEvent.type(passwordInput, "password")
+            // Act
+            const loginButton = screen.getByRole('button', { name: 'Login' });
+            await userEvent.click(loginButton)
+            // Assert
+            expect(setLoggedInMock).not.toHaveBeenCalled();
+        })
+
+    })
+
+    describe("valid login tests", () => {
+
+        beforeEach(() => {
             vi.spyOn(UserHandler, "checkEmailAndPasswordMatchStorage").mockReturnValue(1);
+        })
+
+        it("should call setLoggedIn with the user ID when user details match local storage", async () => {
+            // Arrange
+
+            loggedInMock = "";
+            setLoggedInMock = vi.fn()
+
+            render(<MemoryRouter>
+                <LoginScreen loggedIn={loggedInMock} setLoggedIn={setLoggedInMock} />
+                </MemoryRouter>
+            )
+
+            await userEvent.type(emailInput, "email@email.com")
+            await userEvent.type(passwordInput, "password")
             // Act
             const loginButton = screen.getByRole('button', { name: 'Login' });
             await userEvent.click(loginButton)
@@ -89,9 +114,6 @@ describe("Login Screen Tests", () => {
             expect(setLoggedInMock).toHaveBeenCalledWith(1);
         })   
         
-        it("should render successful login message when user details match local storage", () => {
-
-        })
     })
 })
 
