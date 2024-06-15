@@ -20,7 +20,6 @@ describe("fav location utils tests", () => {
             // Arrange
             // Act
             // Assert
-
             expect(FavLocationUtils.getUsersFavouriteLocations(1)).toStrictEqual(["2643123"])
         })
 
@@ -28,9 +27,16 @@ describe("fav location utils tests", () => {
             // Arrange
             // Act
             // Assert
-
             expect(FavLocationUtils.getUsersFavouriteLocations(4)).toBe(false)
         })
     })
-
+    
+    describe("check location in favourites tests", () => {
+        it("should return true if location is in user's fav locations", () => {
+            // Arrange
+            // Act
+            // Assert
+            expect(FavLocationUtils.checkLocationInFavourites(2643123, 1)).toBe(true);
+        })
+    })
 })
