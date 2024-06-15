@@ -35,7 +35,9 @@ class FavLocationUtils {
         if (userID !== "") {
             const usersArray = UserHandler.getAllItemsInLocalStorageAsArray();
             const user = usersArray.find(user => user.userID === userID);
-            return user.favouriteLocations.includes(String(locationID))
+            if (user) {
+                return user.favouriteLocations.includes(String(locationID))
+            } else {return false}
         } else {
             return false;
         }
